@@ -1,5 +1,5 @@
 <footer class="main-footer">
-    <h6 class="text-center">Copyright &copy; 2016 MEDIANET-INTRANET</h6>
+    <h6 class="text-center">Copyright &copy; 2016 MEDIANET-ERP</h6>
 </footer>
 </div><!-- ./wrapper -->
 <!-- jQuery UI 1.11.4 -->

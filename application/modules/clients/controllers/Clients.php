@@ -8,18 +8,12 @@ class Clients extends MX_Controller
         parent::__construct();
         $this->load->model('clients/Clients_model');
         $this->load->helper('pagination');
-        /*
-        if (!$this->session->clientdata('clientname')) {
-            // Allow some methods?
-            $allowed = array(
-                'some_method_in_this_controller',
-                'other_method_in_this_controller',
-            );
-            if (!in_array($this->router->fetch_method(), $allowed)) {
-                redirect('login');
-            }
+        $this->load->library('ion_auth');
+        if (!$this->ion_auth->logged_in())
+        {
+            // redirect them to the login page
+            redirect('auth/login', 'refresh');
         }
-        */
 
     }
 

@@ -23,13 +23,13 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="<?php echo site_url('users')?>">
-                    <i class="fa fa-users"></i> <span>Utilisateurs</span>
+                <a href="<?php echo site_url('groupes')?>">
+                    <i class="fa fa-group"></i> <span>Groupes</span>
                 </a>
             </li>
             <li class="treeview">
-                <a href="<?php echo site_url('serveurs')?>">
-                    <i class="fa fa-server"></i> <span>Serveurs</span>
+                <a href="<?php echo site_url('auth')?>">
+                    <i class="fa fa-users"></i> <span>Utilisateurs</span>
                 </a>
             </li>
             <li class="treeview">
@@ -38,8 +38,28 @@
                 </a>
             </li>
             <li class="treeview">
+                <a href="<?php echo site_url('serveurs')?>">
+                    <i class="fa fa-server"></i> <span>Serveurs</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="<?php echo site_url('contrats')?>">
+                    <i class="fa fa-globe"></i> <span>Contrats</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="<?php echo site_url('fournisseurs')?>">
+                    <i class="fa fa-globe"></i> <span>Fournisseurs</span>
+                </a>
+            </li>
+            <li class="treeview">
                 <a href="<?php echo site_url('clients')?>">
                     <i class="fa fa-user"></i> <span>Clients</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="<?php echo site_url('historiques')?>">
+                    <i class="fa fa-history"></i> <span>Historiques</span>
                 </a>
             </li>
         </ul>

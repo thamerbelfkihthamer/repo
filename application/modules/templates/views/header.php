@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="csrf-token" content="">
-      <title>MEDIANET-INTRANET</title>
+      <title>MEDIANET-ERP</title>
       <!-- Tell the browser to be responsive to screen width -->
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
       <!-- Bootstrap 3.3.5 -->
@@ -64,7 +64,7 @@
           <a href="<?php echo site_url('dashboard')?>" class="logo">
               <!-- mini logo for sidebar mini 50x50 pixels -->
               <!-- logo for regular state and mobile devices -->
-              <span class="logo-lg"><b>MEDIANET-INTRANET</b></span>
+              <span class="logo-lg"><b>MEDIANET-ERP</b></span>
           </a>
           <!-- Header Navbar: style can be found in header.less -->
           <!-- Header Navbar: style can be found in header.less -->
@@ -266,23 +266,27 @@
                       <!-- User Account: style can be found in dropdown.less -->
                       <li class="dropdown user user-menu">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <i class="fa fa-gears"></i>
                               <span class="hidden-xs"><?php echo  $this->session->userdata('username');?> <?php echo $this->session->userdata('lastname'); ?></span>
                           </a>
                           <ul class="dropdown-menu">
                               <!-- User image -->
                               <li class="user-header">
                                   <p>
-                                      <?php echo  $this->session->userdata('username');?> <?php echo $this->session->userdata('lastname'); ?> - <?php echo $this->session->userdata('role');?>
+                                      <?php echo  $this->session->userdata('last_name');?> <?php echo  $this->session->userdata('first_name');?>
+                                      <br>
+                                      <?php echo $this->session->userdata('role');?>
                                   </p>
                               </li>
                               <!-- Menu Footer-->
                               <li class="user-footer">
                                   <div class="pull-right" id="logout">
-                                      <a href="<?php echo site_url('login/deconnexion')?>" class="btn btn-default btn-flat">Sign out</a>
+                                      <a href="<?php echo site_url('auth/logout')?>" class="btn btn-default btn-flat">Déconnexion</a>
                                   </div>
                               </li>
                           </ul>
                       </li>
+
                       <!-- Control Sidebar Toggle Button -->
 
                   </ul>
