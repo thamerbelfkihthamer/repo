@@ -74,8 +74,7 @@ class Clients extends MX_Controller
         $this->form_validation->set_rules('nom', 'nom', 'required');
         $this->form_validation->set_rules('prenom', 'prenom', 'required');
         $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('motdepasss', 'mot de passe ', 'required');
-        $this->form_validation->set_rules('role', 'Role', 'required');
+        $this->form_validation->set_rules('tel', 'telephone ', 'required');
         /*
          *
          */
@@ -84,8 +83,7 @@ class Clients extends MX_Controller
             $client->lastname = $this->input->post('nom');
             $client->firstname = $this->input->post('prenom');
             $client->email = $this->input->post('email');
-            $client->password = sha1($this->input->post('motdepasss'));
-            $client->roleid = $this->input->post('role');
+            $client->tel = $this->input->post('tel');
             $id = $this->Clients_model->addclient($client);
             if ($id != null) {
                 $this->session->set_flashdata('succus', 'Nouvel client est bien enregistrer.');
@@ -114,7 +112,7 @@ class Clients extends MX_Controller
         $this->form_validation->set_rules('nom', 'nom', 'required');
         $this->form_validation->set_rules('prenom', 'prenom', 'required');
         $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('role', 'Role', 'required');
+        $this->form_validation->set_rules('tel', 'Telephone', 'required');
         if ($this->input->post()) {
 
             if ($this->form_validation->run()) {
@@ -123,10 +121,8 @@ class Clients extends MX_Controller
                 $client->lastname = $this->input->post('nom');
                 $client->firstname = $this->input->post('prenom');
                 $client->email = $this->input->post('email');
-                if ($this->input->post('motdepasss') != null) {
-                    $client->password = sha1($this->input->post('motdepasss'));
-                }
-                $client->roleid = $this->input->post('role');
+                $client->tel = $this->input->post('tel');
+
 
                 $res = $this->Clients_model->updateById($id, $client);
                 if ($res) {

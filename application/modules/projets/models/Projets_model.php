@@ -36,19 +36,19 @@ class Projets_model extends CI_Model
     public function getprojetById($id){
         $this->db->select('*');
         $this->db->from('projets');
-        $this->db->where('Projetid',$id);
+        $this->db->where('id',$id);
         $q = $this->db->get();
         return $q->result();
     }
 
     public function updateById($id=null,$data){
-        $this->db->where('Projetid',$id);
+        $this->db->where('id',$id);
         $q = $this->db->update('projets',$data);
         return $q;
     }
 
     public function deleteById($id){
-        $this->db->where('Projetid', $id);
+        $this->db->where('id', $id);
         $q = $this->db->delete('projets');
         return $q;
     }

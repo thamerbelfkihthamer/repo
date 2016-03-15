@@ -4,12 +4,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Serveurs
+            Fournisseurs
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active"><a href="<?php echo site_url('serveurs'); ?>">Serveurs</a></li>
-            <li class="active"><a href="<?php echo site_url('serveurs/create'); ?>">Creation</a></li>
+            <li class="active"><a href="<?php echo site_url('fournisseurs'); ?>">fournisseurs</a></li>
+            <li class="active"><a href="<?php echo site_url('fournisseurs/create'); ?>">Creation</a></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -18,7 +18,7 @@
             <div class="col-sm-12">
                 <div class="box box-danger">
                     <div class="box-header">
-                        <h3 class="box-title">Nouveau Serveur</h3><br>
+                        <h3 class="box-title">Nouveau fournisseur</h3><br>
                         <?php if ($this->session->flashdata('error')) { ?>
                             <div class="alert alert-danger">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -27,16 +27,35 @@
                         <?php } ?>
                     </div>
                     <div class="box-body">
-                        <form action="<?php echo site_url('serveurs/store') ?>" method="post">
+                        <form action="<?php echo site_url('fournisseurs/store') ?>" method="post">
                             <!-- IP mask -->
                             <div class="form-group">
                                 <label>Nom</label>
-
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa  fa-info"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="nom">
+                                    <input type="text" class="form-control" name="name">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa  fa-envelope-o"></i>
+                                    </div>
+                                    <input type="email" class="form-control" name="email">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <div class="form-group">
+                                <label>telephone</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa  fa-phone"></i>
+                                    </div>
+                                    <input type="tel" class="form-control" name="tel">
                                 </div>
                                 <!-- /.input group -->
                             </div>

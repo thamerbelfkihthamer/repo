@@ -70,22 +70,15 @@ class Serveurs extends MX_Controller
     */
     public function store()
     {
-        $this->form_validation->set_rules('nom', 'nom', 'required');
-        $this->form_validation->set_rules('prenom', 'prenom', 'required');
-        $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('motdepasss', 'mot de passe ', 'required');
-        $this->form_validation->set_rules('role', 'Role', 'required');
+        $this->form_validation->set_rules('name', 'nom', 'required');
         /*
          *
          */
         if ($this->form_validation->run()) {
-            $user = new stdClass();
-            $user->lastname = $this->input->post('nom');
-            $user->firstname = $this->input->post('prenom');
-            $user->email = $this->input->post('email');
-            $user->password = sha1($this->input->post('motdepasss'));
-            $user->roleid = $this->input->post('role');
-            $id = $this->Serveurs_model->adduser($user);
+            $serveur = new stdClass();
+            $serveur->name = $this->input->post('name');
+
+            $id = $this->Serveurs_model->addserveur($serveur);
             if ($id != null) {
                 $this->session->set_flashdata('succus', 'Nouvel utilisateur est bien enregistrer.');
                 redirect('serveurs');
@@ -101,7 +94,7 @@ class Serveurs extends MX_Controller
      */
     public function edit($id = null)
     {
-        $data['user'] = $this->Serveurs_model->getUserById($id);
+        $data['serveur'] = $this->Serveurs_model->getServeurById($id);
         $this->load->view('edit', $data);
     }
 
@@ -110,24 +103,14 @@ class Serveurs extends MX_Controller
      */
     public function update($id = null)
     {
-        $this->form_validation->set_rules('nom', 'nom', 'required');
-        $this->form_validation->set_rules('prenom', 'prenom', 'required');
-        $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('role', 'Role', 'required');
+        $this->form_validation->set_rules('name', 'nom', 'required');
         if ($this->input->post()) {
 
             if ($this->form_validation->run()) {
 
-                $user = new stdClass();
-                $user->lastname = $this->input->post('nom');
-                $user->firstname = $this->input->post('prenom');
-                $user->email = $this->input->post('email');
-                if ($this->input->post('motdepasss') != null) {
-                    $user->password = sha1($this->input->post('motdepasss'));
-                }
-                $user->roleid = $this->input->post('role');
-
-                $res = $this->Serveurs_model->updateById($id, $user);
+                $serveur = new stdClass();
+                $serveur->name = $this->input->post('name');
+                $res = $this->Serveurs_model->updateById($id, $serveur);
                 if ($res) {
                     $this->session->set_flashdata('succus', 'Votre modification est validé');
                     redirect('serveurs');

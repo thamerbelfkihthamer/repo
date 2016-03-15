@@ -1,23 +1,22 @@
 <?php
 
 
-class Projets extends MX_Controller
+class Contrats extends MX_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('projets/Projets_model');
+        $this->load->model('contrats/Contrats_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in())
         {
             // redirect them to the login page
             redirect('auth/login', 'refresh');
         }
-
     }
 
     /*
-     * return all projets
+     * return all serveurs
      * @api
      * @return void
      */
@@ -28,11 +27,11 @@ class Projets extends MX_Controller
         if ($this->input->get('startt')) {
             $start = $this->input->get('startt');
         }
-        $base_url = site_url() . '/projets';
+        $base_url = site_url() . '/contrats';
         $params = array(
             "count" => TRUE
         );
-        $data['count'] = $this->Projets_model->getAllprojets($params);
+        $data['count'] = $this->Contrats_model->getAllcontrats($params);
         $parametres = array(
             'total' => $data['count'],
             'base_url' => $base_url,
@@ -50,7 +49,7 @@ class Projets extends MX_Controller
         $params ["ordre"] = "id_reponse";
 
         // Liste des enregistements du requette
-        $data ["projets"] = $this->Projets_model->getAllprojets($params);
+        $data ["contrats"] = $this->Contrats_model->getAllcontrats($params);
 
         $data['startt'] = $start;
         $this->load->view('index', $data);
@@ -70,21 +69,21 @@ class Projets extends MX_Controller
     */
     public function store()
     {
-        $this->form_validation->set_rules('name', 'nom', 'required');
+        $this->form_validation->set_rules('name', 'name', 'required');
         /*
          *
          */
         if ($this->form_validation->run()) {
-            $projet = new stdClass();
-            $projet->name = $this->input->post('name');
-            $id = $this->Projets_model->addprojet($projet);
+            $contrat = new stdClass();
+            $contrat->name = $this->input->post('name');
+            $id = $this->Contrats_model->addcontrat($contrat);
             if ($id != null) {
                 $this->session->set_flashdata('succus', 'Nouvel utilisateur est bien enregistrer.');
-                redirect('projets');
+                redirect('contrats');
             }
         } else {
             $this->session->set_flashdata('error', 'Veuillez remplir tous les champs.');
-            redirect('projets/create');
+            redirect('contrats/create');
         }
     }
 
@@ -93,7 +92,7 @@ class Projets extends MX_Controller
      */
     public function edit($id = null)
     {
-        $data['projet'] = $this->Projets_model->getprojetById($id);
+        $data['contrat'] = $this->Contrats_model->getContratById($id);
         $this->load->view('edit', $data);
     }
 
@@ -102,28 +101,25 @@ class Projets extends MX_Controller
      */
     public function update($id = null)
     {
-        $this->form_validation->set_rules('name', 'nom', 'required');
+        $this->form_validation->set_rules('name', 'name', 'required');
+
         if ($this->input->post()) {
-
             if ($this->form_validation->run()) {
-
-                $projet = new stdClass();
-                $projet->name = $this->input->post('name');
-                $res = $this->Projets_model->updateById($id, $projet);
+                $contrat = new stdClass();
+                $contrat->name = $this->input->post('name');
+                $res = $this->Contrats_model->updateById($id, $contrat);
                 if ($res) {
-                    $this->session->set_flashdata('succus', 'Votre modification est validé');
-                    redirect('projets');
+                    $this->session->set_flashdata('succus', 'Votre modification est validÃ©');
+                    redirect('contrats');
                 } else {
-                    $this->session->set_flashdata('error', 'valider votre données');
-                    redirect('projets');
+                    $this->session->set_flashdata('error', 'valider votre donnÃ©es');
+                    redirect('contrats');
                 }
-
             } else {
-                $this->session->set_flashdata('error', 'valider votre donnéesss');
+                $this->session->set_flashdata('error', 'valider votre donnÃ©es');
                 $this->edit($id);
             }
         }
-
     }
 
     /*
@@ -131,14 +127,14 @@ class Projets extends MX_Controller
      */
     public function delete($id = null)
     {
-        $res = $this->Projets_model->deleteById($id);
+        $res = $this->Contrats_model->deleteById($id);
 
         if ($res) {
-            $this->session->set_flashdata('succus', 'Votre suppression est validé');
-            redirect('projets');
+            $this->session->set_flashdata('succus', 'Votre suppression est validÃ©');
+            redirect('contrats');
         } else {
             $this->session->set_flashdata('error', 'supprission ne marche pas ');
-            redirect('projets');
+            redirect('contrats');
         }
 
     }

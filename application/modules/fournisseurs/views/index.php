@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            fournisseurs
+            Fournisseurs
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active"><a href="<?php echo site_url('fournisseurs'); ?>">Serveurs</a></li>
+            <li class="active"><a href="<?php echo site_url('fournisseurs'); ?>">Fournisseurs</a></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -51,10 +51,10 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                            <form method="get" action="<?php echo site_url('serveurs/index') ?>">
+                            <form method="get" action="<?php echo site_url('fournisseurs/index') ?>">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="dataTables_length" id="example1_length"><label>Show
+                                        <div class="dataTables_length" id="example1_length"><label>
                                                 <select
                                                      aria-controls="example1"
                                                     class="form-control input-sm" onchange="this.form.submit()"
@@ -71,12 +71,12 @@
                                                     <option
                                                         value="100" <?php echo (100 == $startt) ? "selected" : ""; ?>>100
                                                     </option>
-                                                </select> entries</label></div>
+                                                </select></label></div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div id="example1_filter" class="dataTables_filter"><label>Search:<input
+                                        <div id="example1_filter" class="dataTables_filter"><label>Rechercher :<input
                                                     type="search" class="form-control input-sm" placeholder=""
-                                                    aria-controls="example1"></label></div>
+                                                    aria-controls="example1" name="search" onchange="this.form.submit()"></label></div>
                                     </div>
                                 </div>
                             </form>
@@ -89,11 +89,15 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">ID
+                                                style="width: 163px;">Nom
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                style="width: 202px;">Nom
+                                                style="width: 202px;">Email
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-label="Browser: activate to sort column ascending"
+                                                style="width: 202px;">Telephone
                                             </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
@@ -106,8 +110,9 @@
                                             foreach ($fournisseurs as $fournisseur) { ?>
 
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1"><?php echo $fournisseur->id ?></td>
                                                     <td><?php echo $fournisseur->name ?></td>
+                                                    <td><?php echo $fournisseur->email ?></td>
+                                                    <td><?php echo $fournisseur->tel ?></td>
                                                     <td>
                                                         <a href="<?php echo site_url('fournisseurs/edit/' . $fournisseur->id) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
@@ -132,7 +137,7 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        Showing <?php echo  $start?> to <?php echo  $limit ;?> of <?php echo  count($fournisseurs)?> entries
+                                        Présentation  <?php echo  $start?> à <?php echo  $limit ;?> de <?php echo  count($fournisseurs)?> entrées
                                     </div>
                                 </div>
                                 <div class="col-sm-7">
@@ -157,7 +162,7 @@
 <script>
     function confirmdelete(){
 
-        var answer = confirm('voulez-vous supprimer cet utilisateurs');
+        var answer = confirm('voulez-vous supprimer cet founisseur');
 
         return answer;
     }

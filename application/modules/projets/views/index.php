@@ -54,7 +54,7 @@
                             <form method="get" action="<?php echo site_url('projets/index') ?>">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="dataTables_length" id="example1_length"><label>Show
+                                        <div class="dataTables_length" id="example1_length"><label>
                                                 <select
                                                      aria-controls="example1"
                                                     class="form-control input-sm" onchange="this.form.submit()"
@@ -71,12 +71,12 @@
                                                     <option
                                                         value="100" <?php echo (100 == $startt) ? "selected" : ""; ?>>100
                                                     </option>
-                                                </select> entries</label></div>
+                                                </select></label></div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div id="example1_filter" class="dataTables_filter"><label>Search:<input
+                                        <div id="example1_filter" class="dataTables_filter"><label>Rechercher :<input
                                                     type="search" class="form-control input-sm" placeholder=""
-                                                    aria-controls="example1"></label></div>
+                                                    aria-controls="example1" name="search" onchange="this.form.submit()"></label></div>
                                     </div>
                                 </div>
                             </form>
@@ -95,19 +95,6 @@
                                                 colspan="1" aria-label="Browser: activate to sort column ascending"
                                                 style="width: 202px;">Nom
                                             </th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="Platform(s): activate to sort column ascending"
-                                                style="width: 178px;">Prenom
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1"
-                                                aria-label="Engine version: activate to sort column ascending"
-                                                style="width: 139px;">Email
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="CSS grade: activate to sort column ascending"
-                                                style="width: 100px;">Role
-                                            </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
                                                 >Action
@@ -116,20 +103,17 @@
                                         </thead>
                                         <tbody>
                                         <?php if (count($projets) > 0) {
-                                            foreach ($projets as $user) { ?>
+                                            foreach ($projets as $projet) { ?>
 
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1"><?php echo $user->userid ?></td>
-                                                    <td><?php echo $user->lastname; ?></td>
-                                                    <td><?php echo $user->firstname; ?></td>
-                                                    <td><?php echo $user->email; ?></td>
-                                                    <td><?php echo $user->name ?></td>
+                                                    <td class="sorting_1"><?php echo $projet->id ?></td>
+                                                    <td><?php echo $projet->name; ?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('projets/edit/' . $user->userid) ?>"
+                                                        <a href="<?php echo site_url('projets/edit/' . $projet->id) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('projets/delete/'.$user->userid)?>" onclick=" return confirmdelete()">
+                                                        <a href="<?php echo site_url('projets/delete/'.$projet->id)?>" onclick=" return confirmdelete()">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -148,7 +132,7 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        Showing <?php echo  $start?> to <?php echo  $limit ;?> of <?php echo  count($projets)?> entries
+                                        Présentation  <?php echo  $start?> à <?php echo  $limit ;?> de <?php echo  count($projets)?> entrées
                                     </div>
                                 </div>
                                 <div class="col-sm-7">

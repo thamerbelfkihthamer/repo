@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="pull-right">
-                                    <a href="<?php echo site_url('groupes/create') ?>">
+                                    <a href="<?php echo site_url('auth/create_group') ?>">
                                         <i class="fa fa-user-plus fa-lg"></i>
                                     </a></div>
                             </div>
@@ -71,10 +71,10 @@
                                                     <option
                                                         value="100" <?php echo (100 == $startt) ? "selected" : ""; ?>>100
                                                     </option>
-                                                </select> entries</label></div>
+                                                </select> entrées</label></div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div id="example1_filter" class="dataTables_filter"><label>Search:<input
+                                        <div id="example1_filter" class="dataTables_filter"><label>Rechercher :<input
                                                     type="search" class="form-control input-sm" placeholder=""
                                                     aria-controls="example1"></label></div>
                                     </div>
@@ -109,11 +109,11 @@
                                                     <td class="sorting_1"><?php echo $groupe->id ?></td>
                                                     <td><?php echo $groupe->name ?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('serveurs/edit/' . $groupe->id) ?>"
+                                                        <a href="<?php echo site_url('auth/edit_group/' . $groupe->id) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('serveurs/delete/'.$groupe->id)?>" onclick=" return confirmdelete()">
+                                                        <a href="<?php echo site_url('auth/delete/'.$groupe->id)?>" onclick=" return confirmdelete()">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -132,7 +132,7 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        Showing <?php echo  $start?> to <?php echo  $limit ;?> of <?php echo  count($groupes)?> entries
+                                        présentation <?php echo  $start?> de <?php echo  $limit ;?> à <?php echo  count($groupes)?> entries
                                     </div>
                                 </div>
                                 <div class="col-sm-7">

@@ -31,12 +31,11 @@
                             <!-- IP mask -->
                             <div class="form-group">
                                 <label>Nom</label>
-
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa  fa-info"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="nom">
+                                    <input type="text" class="form-control" name="name">
                                 </div>
                                 <!-- /.input group -->
                             </div>

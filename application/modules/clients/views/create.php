@@ -65,31 +65,16 @@
                             </div>
                             <!-- /.form group -->
                             <div class="form-group">
-                                <label>Mot de passe </label>
+                                <label>Telephone </label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa fa-keyboard-o"></i>
                                     </div>
-                                    <input type="password" class="form-control" name="motdepasss">
+                                    <input type="tel" class="form-control" name="tel">
                                 </div>
                                 <!-- /.input group -->
                             </div>
                             <!-- /.form group -->
-                            <div class="form-group">
-                                <label>Role </label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-keyboard-o"></i>
-                                    </div>
-                                    <select class="form-control" name="role">
-                                        <option value="1">Admin</option>
-                                        <option value="2">user</option>
-                                    </select>
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group -->
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

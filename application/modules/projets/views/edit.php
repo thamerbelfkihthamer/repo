@@ -27,7 +27,7 @@
                         <?php }?>
                     </div>
                     <div class="box-body">
-                        <form action="<?php echo site_url('projets/update/'.$user[0]->userid) ?>" method="post">
+                        <form action="<?php echo site_url('projets/update/'.$projet[0]->id) ?>" method="post">
                             <!-- IP mask -->
                             <div class="form-group">
                                 <label>Nom</label>
@@ -35,61 +35,10 @@
                                     <div class="input-group-addon">
                                         <i class="fa  fa-info"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="nom" value="<?php echo $user[0]->lastname ;?>" />
+                                    <input type="text" class="form-control" name="name" value="<?php echo $projet[0]->name ;?>" />
                                 </div>
                                 <!-- /.input group -->
                             </div>
-                            <!-- /.form group -->
-                            <!-- IP mask -->
-                            <div class="form-group">
-                                <label>Prenom</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa  fa-info"></i>
-                                    </div>
-                                    <input type="text" class="form-control" name="prenom" value="<?php echo $user[0]->firstname?>">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group -->
-                            <!-- IP mask -->
-                            <div class="form-group">
-                                <label>Email</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-envelope-o"></i>
-                                    </div>
-                                    <input type="email" class="form-control" name="email" value="<?php echo $user[0]->email?>">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group -->
-                            <div class="form-group">
-                                <label>Mot de passe </label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-keyboard-o"></i>
-                                    </div>
-                                    <input type="text" class="form-control" name="motdepasss">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group -->
-                            <div class="form-group">
-                                <label>Role </label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-keyboard-o"></i>
-                                    </div>
-                                    <select class="form-control" name="role">
-                                        <option value="1" <?php echo ('Admin' == $user[0]->name) ? "selected" : "";  ?>>Admin</option>
-                                        <option value="2" <?php echo ('User' == $user[0]->name) ? "selected" : "";  ?>>user</option>
-                                    </select>
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group -->
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

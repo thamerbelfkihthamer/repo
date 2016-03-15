@@ -4,12 +4,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Serveurs
+            Contrats
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active"><a href="<?php echo site_url('serveurs'); ?>">Serveurs</a></li>
-            <li class="active"><a href="<?php echo site_url('serveurs/edit'); ?>">Modification</a></li>
+            <li class="active"><a href="<?php echo site_url('contrats'); ?>">Contrats</a></li>
+            <li class="active"><a href="<?php echo site_url('contrats/create'); ?>">Creation</a></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -18,16 +18,16 @@
             <div class="col-sm-12">
                 <div class="box box-danger">
                     <div class="box-header">
-                        <h3 class="box-title">Modifier Serveur</h3><br>
-                        <?php if( $this->session->flashdata('error')){ ?>
+                        <h3 class="box-title">Nouveau Contrat</h3><br>
+                        <?php if ($this->session->flashdata('error')) { ?>
                             <div class="alert alert-danger">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <?php echo $this->session->flashdata('error'); ?>
                             </div>
-                        <?php }?>
+                        <?php } ?>
                     </div>
                     <div class="box-body">
-                        <form action="<?php echo site_url('serveurs/update/'.$serveur[0]->id) ?>" method="post">
+                        <form action="<?php echo site_url('contrats/store') ?>" method="post">
                             <!-- IP mask -->
                             <div class="form-group">
                                 <label>Nom</label>
@@ -35,13 +35,10 @@
                                     <div class="input-group-addon">
                                         <i class="fa  fa-info"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="name" value="<?php echo $serveur[0]->name ;?>" />
+                                    <input type="text" class="form-control" name="name">
                                 </div>
                                 <!-- /.input group -->
                             </div>
-
-
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">
@@ -52,6 +49,7 @@
                 <!-- /.box -->
             </div>
         </div>
+
     </section>
     <!--  main Content -->
 </section><!-- Content Wrapper-->

@@ -81,11 +81,12 @@
                                                     aria-controls="example1"
                                                     class="form-control input-sm choosen" onchange="this.form.submit()"
                                                     name="group">
-                                                    <option value="" disabled selected> Selectionner par groupe </option>
+                                                    <option value="" disabled selected> Selectionner par groupe</option>
                                                     <?php
                                                     foreach ($groups as $group) {
                                                         ?>
-                                                        <option value="<?php echo $group->id ?>" <?php echo ($group->id == $groupid) ? "selected" : ""; ?>>
+                                                        <option
+                                                            value="<?php echo $group->id ?>" <?php echo ($group->id == $groupid) ? "selected" : ""; ?>>
                                                             <?php echo $group->description ?>
                                                         </option>
                                                         <?php

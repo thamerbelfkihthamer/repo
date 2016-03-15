@@ -27,7 +27,7 @@
                         <?php }?>
                     </div>
                     <div class="box-body">
-                        <form action="<?php echo site_url('clients/update/'.$client[0]->clientid) ?>" method="post">
+                        <form action="<?php echo site_url('clients/update/'.$client[0]->id) ?>" method="post">
                             <!-- IP mask -->
                             <div class="form-group">
                                 <label>Nom</label>
@@ -65,31 +65,16 @@
                             </div>
                             <!-- /.form group -->
                             <div class="form-group">
-                                <label>Mot de passe </label>
+                                <label>telephone </label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa fa-keyboard-o"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="motdepasss">
+                                    <input type="tel" class="form-control" name="tel" value="<?php echo $client[0]->tel?>">
                                 </div>
                                 <!-- /.input group -->
                             </div>
                             <!-- /.form group -->
-                            <div class="form-group">
-                                <label>Role </label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-keyboard-o"></i>
-                                    </div>
-                                    <select class="form-control" name="role">
-                                        <option value="1" <?php echo ('Admin' == $client[0]->name) ? "selected" : "";  ?>>Admin</option>
-                                        <option value="2" <?php echo ('client' == $client[0]->name) ? "selected" : "";  ?>>client</option>
-                                    </select>
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group -->
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

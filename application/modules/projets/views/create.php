@@ -35,61 +35,10 @@
                                     <div class="input-group-addon">
                                         <i class="fa  fa-info"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="nom">
+                                    <input type="text" class="form-control" name="name">
                                 </div>
                                 <!-- /.input group -->
                             </div>
-                            <!-- /.form group -->
-                            <!-- IP mask -->
-                            <div class="form-group">
-                                <label>Prenom</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa  fa-info"></i>
-                                    </div>
-                                    <input type="text" class="form-control" name="prenom">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group -->
-                            <!-- IP mask -->
-                            <div class="form-group">
-                                <label>Email</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-envelope-o"></i>
-                                    </div>
-                                    <input type="email" class="form-control" name="email">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group -->
-                            <div class="form-group">
-                                <label>Mot de passe </label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-keyboard-o"></i>
-                                    </div>
-                                    <input type="password" class="form-control" name="motdepasss">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group -->
-                            <div class="form-group">
-                                <label>Role </label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-keyboard-o"></i>
-                                    </div>
-                                    <select class="form-control" name="role">
-                                        <option value="1">Admin</option>
-                                        <option value="2">user</option>
-                                    </select>
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group -->
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

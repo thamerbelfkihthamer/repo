@@ -69,29 +69,25 @@ class Fournisseurs extends MX_Controller
     */
     public function store()
     {
-        $this->form_validation->set_rules('nom', 'nom', 'required');
-        $this->form_validation->set_rules('prenom', 'prenom', 'required');
+        $this->form_validation->set_rules('name', 'name', 'required');
         $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('motdepasss', 'mot de passe ', 'required');
-        $this->form_validation->set_rules('role', 'Role', 'required');
+        $this->form_validation->set_rules('tel','telephone','required');
         /*
          *
          */
         if ($this->form_validation->run()) {
-            $user = new stdClass();
-            $user->lastname = $this->input->post('nom');
-            $user->firstname = $this->input->post('prenom');
-            $user->email = $this->input->post('email');
-            $user->password = sha1($this->input->post('motdepasss'));
-            $user->roleid = $this->input->post('role');
-            $id = $this->Serveurs_model->adduser($user);
+            $fournisseur = new stdClass();
+            $fournisseur->name = $this->input->post('name');
+            $fournisseur->email = $this->input->post('email');
+            $fournisseur->tel = $this->input->post('tel');
+            $id = $this->Fournisseurs_model->addfournisseur($fournisseur);
             if ($id != null) {
                 $this->session->set_flashdata('succus', 'Nouvel utilisateur est bien enregistrer.');
-                redirect('serveurs');
+                redirect('fournisseurs');
             }
         } else {
             $this->session->set_flashdata('error', 'Veuillez remplir tous les champs.');
-            redirect('serveurs/create');
+            redirect('fournisseurs/create');
         }
     }
 
@@ -100,7 +96,7 @@ class Fournisseurs extends MX_Controller
      */
     public function edit($id = null)
     {
-        $data['user'] = $this->Serveurs_model->getUserById($id);
+        $data['fournisseur'] = $this->Fournisseurs_model->getFournisseurById($id);
         $this->load->view('edit', $data);
     }
 
@@ -109,38 +105,28 @@ class Fournisseurs extends MX_Controller
      */
     public function update($id = null)
     {
-        $this->form_validation->set_rules('nom', 'nom', 'required');
-        $this->form_validation->set_rules('prenom', 'prenom', 'required');
+        $this->form_validation->set_rules('name', 'name', 'required');
         $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('role', 'Role', 'required');
+        $this->form_validation->set_rules('tel','telephone','required');
         if ($this->input->post()) {
-
             if ($this->form_validation->run()) {
-
-                $user = new stdClass();
-                $user->lastname = $this->input->post('nom');
-                $user->firstname = $this->input->post('prenom');
-                $user->email = $this->input->post('email');
-                if ($this->input->post('motdepasss') != null) {
-                    $user->password = sha1($this->input->post('motdepasss'));
-                }
-                $user->roleid = $this->input->post('role');
-
-                $res = $this->Serveurs_model->updateById($id, $user);
+                $fournisseur = new stdClass();
+                $fournisseur->name = $this->input->post('name');
+                $fournisseur->email = $this->input->post('email');
+                $fournisseur->tel = $this->input->post('tel');
+                $res = $this->Fournisseurs_model->updateById($id, $fournisseur);
                 if ($res) {
-                    $this->session->set_flashdata('succus', 'Votre modification est validé');
-                    redirect('serveurs');
+                    $this->session->set_flashdata('succus', 'Votre modification est validÃ©');
+                    redirect('fournisseurs');
                 } else {
-                    $this->session->set_flashdata('error', 'valider votre données');
-                    redirect('serveurs');
+                    $this->session->set_flashdata('error', 'valider votre donnÃ©es');
+                    redirect('fournisseurs');
                 }
-
             } else {
-                $this->session->set_flashdata('error', 'valider votre donnéesss');
+                $this->session->set_flashdata('error', 'valider votre donnÃ©es');
                 $this->edit($id);
             }
         }
-
     }
 
     /*
@@ -148,14 +134,14 @@ class Fournisseurs extends MX_Controller
      */
     public function delete($id = null)
     {
-        $res = $this->Serveurs_model->deleteById($id);
+        $res = $this->Fournisseurs_model->deleteById($id);
 
         if ($res) {
-            $this->session->set_flashdata('succus', 'Votre suppression est validé');
-            redirect('serveurs');
+            $this->session->set_flashdata('succus', 'Votre suppression est validÃ©');
+            redirect('fournisseurs');
         } else {
             $this->session->set_flashdata('error', 'supprission ne marche pas ');
-            redirect('serveurs');
+            redirect('fournisseurs');
         }
 
     }

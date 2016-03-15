@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Serveurs
+            Services
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active"><a href="<?php echo site_url('serveurs'); ?>">Serveurs</a></li>
+            <li class="active"><a href="<?php echo site_url('services'); ?>">Services</a></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="pull-right">
-                                    <a href="<?php echo site_url('serveurs/create') ?>">
+                                    <a href="<?php echo site_url('services/create') ?>">
                                         <i class="fa fa-user-plus fa-lg"></i>
                                     </a></div>
                             </div>
@@ -51,7 +51,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                            <form method="get" action="<?php echo site_url('serveurs/index') ?>">
+                            <form method="get" action="<?php echo site_url('services/index') ?>">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="dataTables_length" id="example1_length"><label>
@@ -71,7 +71,7 @@
                                                     <option
                                                         value="100" <?php echo (100 == $startt) ? "selected" : ""; ?>>100
                                                     </option>
-                                                </select> </label></div>
+                                                </select></label></div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div id="example1_filter" class="dataTables_filter"><label>Rechercher :<input
@@ -89,11 +89,7 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">ID
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                style="width: 202px;">Nom
+                                                style="width: 163px;">Nom
                                             </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
@@ -102,18 +98,17 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php if (count($serveurs) > 0) {
-                                            foreach ($serveurs as $serveur) { ?>
+                                        <?php if (count($services) > 0) {
+                                            foreach ($services as $service) { ?>
 
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1"><?php echo $serveur->id ?></td>
-                                                    <td><?php echo $serveur->name ?></td>
+                                                    <td><?php echo $service->name ?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('serveurs/edit/' . $serveur->id) ?>"
+                                                        <a href="<?php echo site_url('services/edit/' . $service->id) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('serveurs/delete/'.$serveur->id)?>" onclick=" return confirmdelete()">
+                                                        <a href="<?php echo site_url('services/delete/'.$service->id)?>" onclick=" return confirmdelete()">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -132,11 +127,11 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        Présentation  <?php echo  $start?> à <?php echo  $limit ;?> de <?php echo  count($serveurs)?> entrées
+                                        Présentation  <?php echo  $start?> à <?php echo  $limit ;?> de <?php echo  count($services)?> entrées
                                     </div>
                                 </div>
                                 <div class="col-sm-7">
-                                    <?php if (count($serveurs)) { ?>
+                                    <?php if (count($services)) { ?>
                                         <!---PAgination --->
                                         <?php $this->load->view("templates/admin/pagination"); ?>
                                         <!---End PAgination --->
@@ -157,7 +152,7 @@
 <script>
     function confirmdelete(){
 
-        var answer = confirm('voulez-vous supprimer cet utilisateurs');
+        var answer = confirm('voulez-vous supprimer cet founisseur');
 
         return answer;
     }
