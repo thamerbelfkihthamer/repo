@@ -30,4 +30,10 @@ class Groupes_model extends  CI_Model
         }
     }
 
+    public function deleteById($id){
+        $this->db->where('id', $id);
+        $q = $this->db->delete('groups');
+        return $q;
+    }
+
 }

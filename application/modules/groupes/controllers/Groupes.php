@@ -48,5 +48,16 @@ class Groupes extends MX_Controller
         $this->load->view('index',$data);
     }
 
+    public function delete($id){
+        $res = $this->Groupes_model->deleteById($id);
+
+        if ($res) {
+            $this->session->set_flashdata('succus', 'Votre suppression est validé');
+            redirect('groupes');
+        } else {
+            $this->session->set_flashdata('error', 'supprission ne marche pas ');
+            redirect('groupes');
+        }
+    }
 
 }

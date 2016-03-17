@@ -95,6 +95,10 @@
                                                 colspan="1" aria-label="Browser: activate to sort column ascending"
                                                 style="width: 202px;">Nom
                                             </th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-label="Browser: activate to sort column ascending"
+                                                style="width: 202px;">Description
+                                            </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
                                                 >Action
@@ -108,12 +112,13 @@
                                                 <tr role="row" class="odd">
                                                     <td class="sorting_1"><?php echo $groupe->id ?></td>
                                                     <td><?php echo $groupe->name ?></td>
+                                                    <td> <?php echo $groupe->description ?></td>
                                                     <td>
                                                         <a href="<?php echo site_url('auth/edit_group/' . $groupe->id) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('auth/delete/'.$groupe->id)?>" onclick=" return confirmdelete()">
+                                                        <a href="<?php echo site_url('groupes/delete/'.$groupe->id)?>" onclick=" return confirmdelete()">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>

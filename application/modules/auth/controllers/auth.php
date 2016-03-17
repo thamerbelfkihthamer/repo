@@ -14,6 +14,7 @@ class Auth extends MX_Controller {
 		$this->load->helper(array('url','language'));
 		$this->load->helper('pagination');
 		$this->load->model('users/Users_model');
+		$this->load->model('groupes/Groupes_model');
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
@@ -487,15 +488,14 @@ class Auth extends MX_Controller {
         }
         $this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
         $this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'trim');
-        $this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
-        $this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
+        $this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
 
-        if ($this->form_validation->run() == true)
+		if ($this->form_validation->run() == true)
         {
             $email    = strtolower($this->input->post('email'));
             $identity = ($identity_column==='email') ? $email : $this->input->post('identity');
             $password = $this->input->post('password');
-
+			$groups[] = $this->input->post('groupe');
             $additional_data = array(
                 'first_name' => $this->input->post('first_name'),
                 'last_name'  => $this->input->post('last_name'),
@@ -503,7 +503,7 @@ class Auth extends MX_Controller {
                 'phone'      => $this->input->post('phone'),
             );
         }
-        if ($this->form_validation->run() == true && $this->ion_auth->register($identity, $password, $email, $additional_data))
+        if ($this->form_validation->run() == true && $this->ion_auth->register($identity, $password, $email, $additional_data,$groups))
         {
             // check to see if we are creating the user
             // redirect them back to the admin page
@@ -515,7 +515,7 @@ class Auth extends MX_Controller {
             // display the create user form
             // set the flash data error message if there is one
             $data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
-
+			$data['groupes'] = $this->Groupes_model->getAllgroupes();
             $data['first_name'] = array(
                 'name'  => 'first_name',
                 'id'    => 'first_name',
@@ -565,13 +565,6 @@ class Auth extends MX_Controller {
                 'value' => $this->form_validation->set_value('password'),
 				'class'=>'form-control',
             );
-            $data['password_confirm'] = array(
-                'name'  => 'password_confirm',
-                'id'    => 'password_confirm',
-                'type'  => 'password',
-                'value' => $this->form_validation->set_value('password_confirm'),
-				'class'=>'form-control',
-            );
 
             $this->_render_page('auth/create_user', $data);
         }
@@ -607,8 +600,7 @@ class Auth extends MX_Controller {
 			// update the password if it was posted
 			if ($this->input->post('password'))
 			{
-				$this->form_validation->set_rules('password', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
-				$this->form_validation->set_rules('password_confirm', $this->lang->line('edit_user_validation_password_confirm_label'), 'required');
+				$this->form_validation->set_rules('password', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']');
 			}
 
 			if ($this->form_validation->run() === TRUE)
@@ -723,13 +715,6 @@ class Auth extends MX_Controller {
 			'type' => 'password',
 			'class'=>'form-control',
 		);
-		$data['password_confirm'] = array(
-			'name' => 'password_confirm',
-			'id'   => 'password_confirm',
-			'type' => 'password',
-			'class'=>'form-control',
-		);
-
 		$this->_render_page('auth/edit_user', $data);
 	}
 

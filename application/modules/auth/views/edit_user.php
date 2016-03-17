@@ -88,17 +88,6 @@
                             </div>
                             <!-- /.input group -->
                         </div>
-
-                        <div class="form-group">
-                            <label>Mot de passe </label>
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-keyboard-o"></i>
-                                </div>
-                                <?php echo form_input($password_confirm);?>
-                            </div>
-                            <!-- /.input group -->
-                        </div>
                         <div class="form-group">
                             <?php if ($this->ion_auth->is_admin()): ?>
                                 <label><?php echo lang('edit_user_groups_heading');?> </label><br>
@@ -116,7 +105,7 @@
                                         }
                                         ?>
                                         <input type="checkbox" name="groups[]" value="<?php echo $group['id'];?>"<?php echo $checked;?>>
-                                        <?php echo htmlspecialchars($group['name'],ENT_QUOTES,'UTF-8');?>
+                                        <?php echo htmlspecialchars($group['description'],ENT_QUOTES,'UTF-8');?>
                                     </label>
                                     <?php echo form_hidden('id', $user->id);?>
                                     <?php echo form_hidden($csrf); ?>

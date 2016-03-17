@@ -12,7 +12,7 @@
             <li class="active"><a href="<?php echo site_url('auth/create_user'); ?>">Creation</a></li>
         </ol>
     </section>
-    <?php echo $message;?>
+    <?php echo $message; ?>
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -32,6 +32,7 @@
                         <!-- IP mask -->
                         <div class="form-group has-feedback">
                             <label>Nom</label>
+
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa  fa-info"></i>
@@ -75,6 +76,7 @@
                         </div>
                         <div class="form-group">
                             <label>Telephone</label>
+
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa  fa-phone"></i>
@@ -86,7 +88,6 @@
                         <!-- /.form group -->
                         <div class="form-group">
                             <label>Mot de passe </label>
-
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-keyboard-o"></i>
@@ -95,16 +96,14 @@
                             </div>
                             <!-- /.input group -->
                         </div>
-
                         <div class="form-group">
-                            <label>Mot de passe </label>
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-keyboard-o"></i>
-                                </div>
-                                <?php echo form_input($password_confirm); ?>
-                            </div>
-                            <!-- /.input group -->
+                            <label>Role</label>
+                            <select name="groupe" class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
+                                    tabindex="-1" aria-hidden="true">
+                                <?php foreach($groupes as $group){?>
+                                <option value="<?php echo $group->id?>" <?php echo set_select('myselect', 'one', TRUE); ?> ><?php echo $group->description?></option>
+                                <?php }?>
+                            </select>
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -121,5 +120,10 @@
     <!--  main Content -->
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
+<script>
+    $(document).ready(function(){
+        $(".choosen").select2();
+    })
+</script>
 
 
