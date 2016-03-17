@@ -39,6 +39,14 @@
                                 </div>
                                 <!-- /.input group -->
                             </div>
+                            <div class="form-group">
+                                <label>Projet</label>
+                                <select name="projets[]" class="form-control select2 select2-hidden-accessible" multiple="multiple" data-placeholder="Selectionner les projet de ce contrat " style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                    <?php foreach($projets as $projet ){?>
+                                    <option value="<?php echo $projet->id?>"><?php echo $projet->name; ?></option>
+                                    <?php }?>
+                                    </select>
+                            </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">
@@ -54,5 +62,8 @@
     <!--  main Content -->
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
+<script>
+    $('.select2').select2();
+</script>
 
 

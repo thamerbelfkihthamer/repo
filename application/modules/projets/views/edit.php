@@ -45,7 +45,7 @@
                                         tabindex="-1" aria-hidden="true">
                                     <option disabled selected>Selectionner client</option>
                                     <?php foreach($clients as $client){?>
-                                        <option value="<?php echo $client->id?>" <?php echo ($projet[0]->id_client == $client->id) ? "selected" : ""; ?> ><?php echo $client->lastname;echo $client->firstname?></option>
+                                        <option value="<?php echo $client->id?>" <?php echo ($projet[0]->id_client == $client->id) ? "selected" : ""; ?> ><?php echo $client->firstname;echo' '; echo $client->lastname?></option>
                                     <?php }?>
                                 </select>
                             </div>

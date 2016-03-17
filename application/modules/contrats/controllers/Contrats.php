@@ -7,6 +7,7 @@ class Contrats extends MX_Controller
     {
         parent::__construct();
         $this->load->model('contrats/Contrats_model');
+        $this->load->model('projets/Projets_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in())
         {
@@ -61,7 +62,8 @@ class Contrats extends MX_Controller
      */
     public function create()
     {
-        $this->load->view('create');
+        $data['projets'] = $this->Projets_model->getAllprojets();
+        $this->load->view('create',$data);
     }
 
     /*
@@ -70,15 +72,20 @@ class Contrats extends MX_Controller
     public function store()
     {
         $this->form_validation->set_rules('name', 'name', 'required');
-        /*
-         *
-         */
+        $this->form_validation->set_rules('projets[]','projets','required');
         if ($this->form_validation->run()) {
             $contrat = new stdClass();
             $contrat->name = $this->input->post('name');
+            $projets = $this->input->post('projets');
+
             $id = $this->Contrats_model->addcontrat($contrat);
-            if ($id != null) {
-                $this->session->set_flashdata('succus', 'Nouvel utilisateur est bien enregistrer.');
+            $idcontart = array(
+                'id_contrat' =>$id,
+            );
+
+            $t = $this->Projets_model->updateByprojetsId($projets,$idcontart);
+            if ($t != null) {
+                $this->session->set_flashdata('succus', 'Nouvel contrat est bien enregistrer.');
                 redirect('contrats');
             }
         } else {

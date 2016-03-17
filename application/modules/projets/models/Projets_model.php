@@ -47,6 +47,13 @@ class Projets_model extends CI_Model
         return $q;
     }
 
+    public function updateByprojetsId($id =array(),$data){
+
+        $this->db->where_in('id',$id);
+        $q = $this->db->update('projets',$data);
+        return $q;
+    }
+
     public function deleteById($id){
         $this->db->where('id', $id);
         $q = $this->db->delete('projets');
