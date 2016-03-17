@@ -7,6 +7,7 @@ class Projets extends MX_Controller
     {
         parent::__construct();
         $this->load->model('projets/Projets_model');
+        $this->load->model('clients/Clients_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in())
         {
@@ -62,7 +63,8 @@ class Projets extends MX_Controller
      */
     public function create()
     {
-        $this->load->view('create');
+        $data['clients'] = $this->Clients_model->getAllclients();
+        $this->load->view('create',$data);
     }
 
     /*
@@ -71,15 +73,17 @@ class Projets extends MX_Controller
     public function store()
     {
         $this->form_validation->set_rules('name', 'nom', 'required');
+        $this->form_validation->set_rules('client','client','required');
         /*
          *
          */
         if ($this->form_validation->run()) {
             $projet = new stdClass();
             $projet->name = $this->input->post('name');
+            $projet->id_client = $this->input->post('client');
             $id = $this->Projets_model->addprojet($projet);
             if ($id != null) {
-                $this->session->set_flashdata('succus', 'Nouvel utilisateur est bien enregistrer.');
+                $this->session->set_flashdata('succus', 'Nouvel projet est bien enregistrer.');
                 redirect('projets');
             }
         } else {
@@ -94,6 +98,7 @@ class Projets extends MX_Controller
     public function edit($id = null)
     {
         $data['projet'] = $this->Projets_model->getprojetById($id);
+        $data['clients'] = $this->Clients_model->getAllclients();
         $this->load->view('edit', $data);
     }
 
@@ -103,23 +108,25 @@ class Projets extends MX_Controller
     public function update($id = null)
     {
         $this->form_validation->set_rules('name', 'nom', 'required');
+        $this->form_validation->set_rules('client','client','required');
         if ($this->input->post()) {
 
             if ($this->form_validation->run()) {
 
                 $projet = new stdClass();
                 $projet->name = $this->input->post('name');
+                $projet->id_client = $this->input->post('client');
                 $res = $this->Projets_model->updateById($id, $projet);
                 if ($res) {
-                    $this->session->set_flashdata('succus', 'Votre modification est validé');
+                    $this->session->set_flashdata('succus', 'Votre modification est validÃ©');
                     redirect('projets');
                 } else {
-                    $this->session->set_flashdata('error', 'valider votre données');
+                    $this->session->set_flashdata('error', 'valider votre donnÃ©es');
                     redirect('projets');
                 }
 
             } else {
-                $this->session->set_flashdata('error', 'valider votre donnéesss');
+                $this->session->set_flashdata('error', 'valider votre donnÃ©esss');
                 $this->edit($id);
             }
         }
@@ -134,7 +141,7 @@ class Projets extends MX_Controller
         $res = $this->Projets_model->deleteById($id);
 
         if ($res) {
-            $this->session->set_flashdata('succus', 'Votre suppression est validé');
+            $this->session->set_flashdata('succus', 'Votre suppression est validÃ©');
             redirect('projets');
         } else {
             $this->session->set_flashdata('error', 'supprission ne marche pas ');

@@ -39,6 +39,16 @@
                                 </div>
                                 <!-- /.input group -->
                             </div>
+                            <div class="form-group">
+                                <label>Client</label>
+                                <select name="client" class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
+                                        tabindex="-1" aria-hidden="true">
+                                    <option disabled selected>Selectionner client</option>
+                                    <?php foreach($clients as $client){?>
+                                        <option value="<?php echo $client->id?>"><?php echo $client->firstname ; echo' ' ;echo $client->lastname;?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

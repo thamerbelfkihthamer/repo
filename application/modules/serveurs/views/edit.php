@@ -49,8 +49,6 @@
                                     <?php }?>
                                 </select>
                             </div>
-
-
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">
