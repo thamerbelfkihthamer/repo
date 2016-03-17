@@ -39,7 +39,15 @@
                                 </div>
                                 <!-- /.input group -->
                             </div>
-                            <!-- /.form group -->
+                            <div class="form-group">
+                                <label>Fournisseur</label>
+                                <select name="fournisseur" class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
+                                        tabindex="-1" aria-hidden="true">
+                                    <?php foreach($fournisseurs as $fournisseur){?>
+                                        <option value="<?php echo $fournisseur->id?>" <?php echo set_select('myselect', 'one', TRUE); ?> ><?php echo $fournisseur->name?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

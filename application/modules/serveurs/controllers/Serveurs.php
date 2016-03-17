@@ -7,6 +7,7 @@ class Serveurs extends MX_Controller
     {
         parent::__construct();
         $this->load->model('serveurs/Serveurs_model');
+        $this->load->model('fournisseurs/Fournisseurs_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in())
         {
@@ -62,7 +63,8 @@ class Serveurs extends MX_Controller
      */
     public function create()
     {
-        $this->load->view('create');
+        $data['fournisseurs'] = $this->Fournisseurs_model->getAllfournisseurs();
+        $this->load->view('create',$data);
     }
 
     /*
@@ -71,16 +73,18 @@ class Serveurs extends MX_Controller
     public function store()
     {
         $this->form_validation->set_rules('name', 'nom', 'required');
+        $this->form_validation->set_rules('fournisseur','fournisseur','required');
         /*
          *
          */
         if ($this->form_validation->run()) {
             $serveur = new stdClass();
             $serveur->name = $this->input->post('name');
+            $serveur->id_fournisseur = $this->input->post('fournisseur');
 
             $id = $this->Serveurs_model->addserveur($serveur);
             if ($id != null) {
-                $this->session->set_flashdata('succus', 'Nouvel utilisateur est bien enregistrer.');
+                $this->session->set_flashdata('succus', 'Nouvel serveur est bien enregistrer.');
                 redirect('serveurs');
             }
         } else {
@@ -94,6 +98,7 @@ class Serveurs extends MX_Controller
      */
     public function edit($id = null)
     {
+        $data['fournisseurs'] = $this->Fournisseurs_model->getAllfournisseurs();
         $data['serveur'] = $this->Serveurs_model->getServeurById($id);
         $this->load->view('edit', $data);
     }
@@ -104,23 +109,25 @@ class Serveurs extends MX_Controller
     public function update($id = null)
     {
         $this->form_validation->set_rules('name', 'nom', 'required');
+        $this->form_validation->set_rules('fournisseur','fournisseur','required');
         if ($this->input->post()) {
 
             if ($this->form_validation->run()) {
 
                 $serveur = new stdClass();
                 $serveur->name = $this->input->post('name');
+                $serveur->id_fournisseur = $this->input->post('fournisseur');
                 $res = $this->Serveurs_model->updateById($id, $serveur);
                 if ($res) {
-                    $this->session->set_flashdata('succus', 'Votre modification est validé');
+                    $this->session->set_flashdata('succus', 'Votre modification est validÃ©');
                     redirect('serveurs');
                 } else {
-                    $this->session->set_flashdata('error', 'valider votre données');
+                    $this->session->set_flashdata('error', 'valider votre donnÃ©es');
                     redirect('serveurs');
                 }
 
             } else {
-                $this->session->set_flashdata('error', 'valider votre donnéesss');
+                $this->session->set_flashdata('error', 'valider votre donnÃ©es');
                 $this->edit($id);
             }
         }
@@ -135,7 +142,7 @@ class Serveurs extends MX_Controller
         $res = $this->Serveurs_model->deleteById($id);
 
         if ($res) {
-            $this->session->set_flashdata('succus', 'Votre suppression est validé');
+            $this->session->set_flashdata('succus', 'Votre suppression est validÃ©');
             redirect('serveurs');
         } else {
             $this->session->set_flashdata('error', 'supprission ne marche pas ');
