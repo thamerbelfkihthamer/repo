@@ -8,6 +8,7 @@ class Contrats extends MX_Controller
         parent::__construct();
         $this->load->model('contrats/Contrats_model');
         $this->load->model('projets/Projets_model');
+        $this->load->model('clients/Clients_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in())
         {
@@ -58,16 +59,17 @@ class Contrats extends MX_Controller
 
 
     /*
-     * return create  user form
+     *@return void
      */
     public function create()
     {
-        $data['projets'] = $this->Projets_model->getAllprojets();
+        $data['projets'] = $this->Projets_model->getAllprojetswithclient();
+        $data['clients'] = $this->Clients_model->getallclients();
         $this->load->view('create',$data);
     }
 
     /*
-    * add user data in database user table
+    *@return void
     */
     public function store()
     {
@@ -95,20 +97,23 @@ class Contrats extends MX_Controller
     }
 
     /*
-     * return edit user form
+     *@return void
      */
     public function edit($id = null)
     {
         $data['contrat'] = $this->Contrats_model->getContratById($id);
+        $data['projets'] = $this->Projets_model->getProjetsBycontrat($id);
         $this->load->view('edit', $data);
     }
 
     /*
      * update user data in database table
+     * @return void
      */
     public function update($id = null)
     {
         $this->form_validation->set_rules('name', 'name', 'required');
+        $this->form_validation->set_rules('projets[]','projets','required');
 
         if ($this->input->post()) {
             if ($this->form_validation->run()) {
@@ -131,6 +136,7 @@ class Contrats extends MX_Controller
 
     /*
      * delete user from database
+     * @return void
      */
     public function delete($id = null)
     {
@@ -140,7 +146,7 @@ class Contrats extends MX_Controller
             $this->session->set_flashdata('succus', 'Votre suppression est validé');
             redirect('contrats');
         } else {
-            $this->session->set_flashdata('error', 'supprission ne marche pas ');
+            $this->session->set_flashdata('error', 'suppression ne marche pas ');
             redirect('contrats');
         }
 

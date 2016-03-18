@@ -31,6 +31,7 @@
                             <!-- IP mask -->
                             <div class="form-group">
                                 <label>Nom</label>
+
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa  fa-info"></i>
@@ -41,11 +42,16 @@
                             </div>
                             <div class="form-group">
                                 <label>Projet</label>
-                                <select name="projets[]" class="form-control select2 select2-hidden-accessible" multiple="multiple" data-placeholder="Selectionner les projet de ce contrat " style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                    <?php foreach($projets as $projet ){?>
-                                    <option value="<?php echo $projet->id?>"><?php echo $projet->name; ?></option>
-                                    <?php }?>
-                                    </select>
+                                <select name="projets[]" class="form-control select2 select2-hidden-accessible"
+                                        multiple="multiple" data-placeholder="Selectionner les projet de ce contrat "
+                                        style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                    <?php foreach ($projets as $projet) { ?>
+                                    <optgroup label="<?php echo $projet->email;?>">
+                                            <option
+                                                value="<?php echo $projet->id ?>"><?php echo $projet->name; ?></option>
+                                    </optgroup>
+                                        <?php } ?>
+                                </select>
                             </div>
                     </div>
                     <!-- /.box-body -->

@@ -40,6 +40,16 @@
                                 <!-- /.input group -->
                             </div>
                             <div class="form-group">
+                                <label>Serveur</label>
+                                <select name="serveur" class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
+                                        tabindex="-1" aria-hidden="true">
+                                    <option disabled selected>Selectionner Serveur</option>
+                                    <?php foreach($serveurs as $serveur){?>
+                                        <option value="<?php echo $serveur->id?>" <?php echo ($projet[0]->id_serveur  == $serveur->id) ? "selected" : ""; ?>><?php echo $serveur->name;?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label>Client</label>
                                 <select name="client" class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
                                         tabindex="-1" aria-hidden="true">

@@ -24,6 +24,13 @@ class Projets_model extends CI_Model
         }
     }
 
+    public function getAllprojetswithclient(){
+        $this->db->select('*');
+        $this->db->from('projets');
+        $this->db->join('clients', 'clients.id = projets.id_client');
+        $query = $this->db->get();
+        return $query->result();
+    }
     public function addprojet($projet=null){
         $query = $this->db->insert('projets', $projet);
         if ($query) {
@@ -52,6 +59,14 @@ class Projets_model extends CI_Model
         $this->db->where_in('id',$id);
         $q = $this->db->update('projets',$data);
         return $q;
+    }
+
+    public function getProjetsBycontrat($id){
+
+        $this->db->select('*');
+        $this->db->from('projets');
+        $q = $this->db->get();
+        return $q->result();
     }
 
     public function deleteById($id){

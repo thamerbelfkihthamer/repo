@@ -8,6 +8,7 @@ class Projets extends MX_Controller
         parent::__construct();
         $this->load->model('projets/Projets_model');
         $this->load->model('clients/Clients_model');
+        $this->load->model('serveurs/Serveurs_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in())
         {
@@ -64,6 +65,7 @@ class Projets extends MX_Controller
     public function create()
     {
         $data['clients'] = $this->Clients_model->getAllclients();
+        $data['serveurs'] = $this->Serveurs_model->getAllserveurs();
         $this->load->view('create',$data);
     }
 
@@ -74,6 +76,7 @@ class Projets extends MX_Controller
     {
         $this->form_validation->set_rules('name', 'nom', 'required');
         $this->form_validation->set_rules('client','client','required');
+        $this->form_validation->set_rules('serveur','serveur','required');
         /*
          *
          */
@@ -81,6 +84,7 @@ class Projets extends MX_Controller
             $projet = new stdClass();
             $projet->name = $this->input->post('name');
             $projet->id_client = $this->input->post('client');
+            $projet->id_serveur = $this->input->post('serveur');
             $id = $this->Projets_model->addprojet($projet);
             if ($id != null) {
                 $this->session->set_flashdata('succus', 'Nouvel projet est bien enregistrer.');
@@ -99,6 +103,7 @@ class Projets extends MX_Controller
     {
         $data['projet'] = $this->Projets_model->getprojetById($id);
         $data['clients'] = $this->Clients_model->getAllclients();
+        $data['serveurs'] = $this->Serveurs_model->getAllserveurs();
         $this->load->view('edit', $data);
     }
 
@@ -109,6 +114,7 @@ class Projets extends MX_Controller
     {
         $this->form_validation->set_rules('name', 'nom', 'required');
         $this->form_validation->set_rules('client','client','required');
+        $this->from_validation->set_rules('serveur','serveur','required');
         if ($this->input->post()) {
 
             if ($this->form_validation->run()) {
@@ -116,6 +122,7 @@ class Projets extends MX_Controller
                 $projet = new stdClass();
                 $projet->name = $this->input->post('name');
                 $projet->id_client = $this->input->post('client');
+                $projet->id_serveur = $this->input->post('serveur');
                 $res = $this->Projets_model->updateById($id, $projet);
                 if ($res) {
                     $this->session->set_flashdata('succus', 'Votre modification est validé');

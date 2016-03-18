@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Projet</label>
-                                <select name="projets" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Selectionner les projet de ce contrat " style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <select name="projets[]" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Selectionner les projet de ce contrat " style="width: 100%;" tabindex="-1" aria-hidden="true">
                                     <?php foreach($projets as $projet){?>
                                         <option value="<?php echo $projet->id?>" <?php echo ($contrat[0]->id == $projet->id_contrat) ? "selected" : ""; ?>><?php echo $projet->name; ?></option>
                                     <?php } ?>
