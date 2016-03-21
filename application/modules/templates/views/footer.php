@@ -60,10 +60,9 @@
 <script src="<?php echo base_url(); ?>application/assets/vendor/datatables/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>application/assets/vendor/bootstrap-filestyle/src/bootstrap-filestyle.min.js"></script>
 <script src="<?php echo base_url(); ?>application/assets/vendor/remarkable-bootstrap-notify/dist/bootstrap-notify.js"></script>
-
+<script src="<?php echo base_url();?>application/assets/js/ModelAccesView.js"></script>
 <script>
     $(".choosen").select2();
-
     $('body').hide();
     $('body').fadeIn(1000);
 

@@ -37,6 +37,7 @@
       <!-- bootstrap wysihtml5 - text editor -->
       <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/vendor/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
       <script src="<?php echo base_url(); ?>application/assets/vendor/jQuery/jQuery-2.1.4.min.js"></script>
+      <script src="<?php echo base_url();?>application/assets/js/angular.min.js"></script>
       <!-- Font Awesome -->
       <!-- Ionicons -->
       <!-- daterange picker -->

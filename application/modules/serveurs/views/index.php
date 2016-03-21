@@ -113,9 +113,14 @@
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('serveurs/delete/'.$serveur->id)?>" onclick=" return confirmdelete()">
+                                                        <a href="#" data-toggle="modal" data-target="#myModal" style="margin-right: 10px; margin-left: 5px;" onclick="serveurid(<?php echo $serveur->id;?>)">
+                                                            <i class="fa  fa-plus-square fa-lg"></i>
+                                                        </a>
+                                                        <input type="text" value="<?php echo $serveur->id;?>" hidden>
+                                                        <a href="<?php echo site_url('serveurs/delete/'.$serveur->id)?>" onclick=" return confirmdelete()" style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
+
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -128,7 +133,6 @@
                                 </div>
                             </div>
                             <br>
-
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
@@ -151,14 +155,13 @@
         </div>
         </div>
     </section>
+    <?php  $this->load->view('serveurs/modal');?>
     <!--  main Content -->
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
 <script>
     function confirmdelete(){
-
         var answer = confirm('voulez-vous supprimer cet utilisateurs');
-
         return answer;
     }
 

@@ -151,4 +151,13 @@ class Serveurs extends MX_Controller
 
     }
 
+    public function ftp(){
+
+        $this->load->view('acces_views/ftp');
+    }
+
+    public function mysql(){
+        $this->load->view('acces_views/mysql');
+    }
+
 }

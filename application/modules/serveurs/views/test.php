@@ -1,0 +1,1 @@
+<input type="text" placeholder="hello ua" ng-model="name">
