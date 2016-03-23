@@ -59,9 +59,10 @@ class Services extends MX_Controller
     /*
      * return create  user form
      */
-    public function create()
+    public function create($id)
     {
-        $this->load->view('create');
+       $data['serveur_id'] = $id;
+        $this->load->view('create',$data);
     }
 
     /*
@@ -69,21 +70,25 @@ class Services extends MX_Controller
     */
     public function store()
     {
-        $this->form_validation->set_rules('name', 'name', 'required');
-        /*
-         *
-         */
+        $this->form_validation->set_rules('typeacces', 'Type acces', 'required');
+        $this->form_validation->set_rules('Identifiant','Identifiant','required');
+        $this->form_validation->set_rules('motdepass','mot de passe','required');
+
+        $serveurid = $this->input->post('serveur_id');
         if ($this->form_validation->run()) {
             $service = new stdClass();
-            $service->name = $this->input->post('name');
+            $service->name = $this->input->post('typeacces');
+            $service->identifiant = $this->input->post('Identifiant');
+            $service->password = $this->input->post('motdepass');
+            $service->serveur_id = $this->input->post('serveur_id');
             $id = $this->Services_model->addservice($service);
             if ($id != null) {
-                $this->session->set_flashdata('succus', 'Nouvel utilisateur est bien enregistrer.');
-                redirect('services');
+                $this->session->set_flashdata('succus', 'Nouvel Service est bien enregistrer.');
+                redirect('services/show/'.$serveurid);
             }
         } else {
             $this->session->set_flashdata('error', 'Veuillez remplir tous les champs.');
-            redirect('services/create');
+            redirect('services/create/'.$serveurid);
         }
     }
 
@@ -122,6 +127,14 @@ class Services extends MX_Controller
         }
     }
 
+    public function show($id){
+        $start = 10;
+        $data['startt'] = $start;
+        $data['id'] = $id;
+        $services = $this->Services_model->getServiceswithserveurid($id);
+        $data['services'] = $services;
+        $this->load->view('show',$data);
+    }
     /*
      * delete user from database
      */

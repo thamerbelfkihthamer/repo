@@ -24,6 +24,14 @@ class Services_model extends CI_Model
         }
     }
 
+    public function getServiceswithserveurid($id){
+        $this->db->select('*');
+        $this->db->from('services');
+        $this->db->where('serveur_id',$id);
+        $q = $this->db->get();
+        return $q->result();
+    }
+
     public function addservice($service=null){
         $query = $this->db->insert('services', $service);
         if ($query) {

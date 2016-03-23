@@ -5,14 +5,21 @@
 
 var app = angular.module("modelview", []);
 
-app.controller("myController", function ($scope) {
-    var s = $scope.url;
-});
+app.controller("myController",['$scope' , function ($scope,$http) {
+    $http.get("http://localhost/MEDIANET-ERP/services/getallserviceswithserveur",config)
+        .success(function(data,status,headers,config){
+            console.log(data);
+        });
+     $scope.url ="test";
+    $scope.get()
 
-app.controller("ftpController", function ($scope) {
 
-    $scope.nom = "Login ftp";
-    $scope.motdepass = "mot de pass";
+}]);
+
+app.controller("ftpController",['$scope' ,function ($scope) {
+
+    $scope.nom = "";
+    $scope.motdepass = "";
     $scope.serveurid = $("#serveurid").val();
     $scope.go = function () {
         var nom = $scope.nom;
@@ -21,9 +28,10 @@ app.controller("ftpController", function ($scope) {
         console.log(nom);
         console.log(motdepass);
         console.log(serveurid);
+        $("button").unbind();
     }
 
-});
+}]);
 
 app.controller("mysqlController", function ($scope) {
 
@@ -38,5 +46,6 @@ app.controller("mysqlController", function ($scope) {
         console.log(nom);
         console.log(motdepass);
         console.log(serveurid);
+        $("button").unbind();
     }
 });

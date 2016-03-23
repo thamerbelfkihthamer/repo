@@ -30,15 +30,35 @@
                         <form action="<?php echo site_url('services/store') ?>" method="post">
                             <!-- IP mask -->
                             <div class="form-group">
-                                <label>Nom</label>
+                                <label>Type d'acces</label>
+                                <select  name="typeacces" ng-model="url"  class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
+                                         tabindex="-1" aria-hidden="true">
+                                    <option value="ftp">FTP</option>
+                                    <option value="ssh">SSH</option>
+                                    <option value="mysql">Mysql</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Identifiant</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
-                                        <i class="fa  fa-info"></i>
+                                        <i class="fa fa-info"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control" ng-model="nom" name="Identifiant">
                                 </div>
                                 <!-- /.input group -->
                             </div>
+                            <div class="form-group">
+                                <label>Mot de passe </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-info"></i>
+                                    </div>
+                                    <input type="text" class="form-control" ng-model="motdepass" name="motdepass">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <input type="hidden"  class="form-control" name="serveur_id" value="<?php echo $serveur_id;?>">
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">
@@ -54,5 +74,7 @@
     <!--  main Content -->
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
+<script src="<?php echo base_url();?>application/assets/js/ModelAccesView.js"></script>
+
 
 
