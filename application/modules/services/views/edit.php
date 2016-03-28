@@ -30,14 +30,34 @@
                         <form action="<?php echo site_url('services/update/'.$service[0]->id) ?>" method="post">
                             <!-- IP mask -->
                             <div class="form-group">
-                                <label>Nom</label>
+                                <label>Type d'acces</label>
+                                <select  name="typeacces" ng-model="url"  class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
+                                         tabindex="-1" aria-hidden="true">
+                                    <option value="ftp" <?php echo ("ftp" == $service[0]->name) ? "selected" : ""; ?>>FTP</option>
+                                    <option value="ssh" <?php echo ("ssh" == $service[0]->name) ? "selected" : ""; ?>>SSH</option>
+                                    <option value="mysql" <?php echo ("mysql" == $service[0]->name) ? "selected" : ""; ?>>Mysql</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Identifiant</label>
                                 <div class="input-group">
                                     <div class="input-group-addon">
-                                        <i class="fa  fa-info"></i>
+                                        <i class="fa fa-info"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="name" value="<?php echo $service[0]->name ;?>" />
+                                    <input type="text" class="form-control" ng-model="nom" name="Identifiant" value="<?php echo $service[0]->identifiant ?>">
                                 </div>
                                 <!-- /.input group -->
+                            </div>
+                            <div class="form-group">
+                                <label>Mot de passe </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-info"></i>
+                                    </div>
+                                    <input type="text" class="form-control" ng-model="motdepass" name="motdepass" value="<?php echo $service[0]->password?>">
+                                </div>
+                                <!-- /.input group -->
+                                <input type="hidden"  class="form-control" name="serveur_id" value="<?php echo $service[0]->serveur_id?>">
                             </div>
                     </div>
                     <!-- /.box-body -->

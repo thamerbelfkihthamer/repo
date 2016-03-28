@@ -39,11 +39,6 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="<?php echo site_url('services')?>">
-                    <i class="fa fa-book"></i> <span>Services</span>
-                </a>
-            </li>
-            <li class="treeview">
                 <a href="<?php echo site_url('serveurs')?>">
                     <i class="fa fa-server"></i> <span>Serveurs</span>
                 </a>

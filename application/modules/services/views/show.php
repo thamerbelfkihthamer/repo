@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="pull-right">
-                                    <a href="<?php echo site_url('services/create/'.$id) ?>">
+                                    <a href="<?php echo site_url('services/create/'.$serveurid) ?>">
                                         <i class="fa fa-user-plus fa-lg"></i>
                                     </a></div>
                             </div>
@@ -51,7 +51,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                            <form method="get" action="<?php echo site_url('services/index') ?>">
+                            <form method="get" action="<?php echo site_url('services/show/'.$serveurid) ?>">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="dataTables_length" id="example1_length"><label>

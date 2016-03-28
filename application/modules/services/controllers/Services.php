@@ -8,8 +8,7 @@ class Services extends MX_Controller
         parent::__construct();
         $this->load->model('services/Services_model');
         $this->load->helper('pagination');
-        if (!$this->ion_auth->logged_in())
-        {
+        if (!$this->ion_auth->logged_in()) {
             // redirect them to the login page
             redirect('auth/login', 'refresh');
         }
@@ -61,8 +60,8 @@ class Services extends MX_Controller
      */
     public function create($id)
     {
-       $data['serveur_id'] = $id;
-        $this->load->view('create',$data);
+        $data['serveur_id'] = $id;
+        $this->load->view('create', $data);
     }
 
     /*
@@ -71,8 +70,8 @@ class Services extends MX_Controller
     public function store()
     {
         $this->form_validation->set_rules('typeacces', 'Type acces', 'required');
-        $this->form_validation->set_rules('Identifiant','Identifiant','required');
-        $this->form_validation->set_rules('motdepass','mot de passe','required');
+        $this->form_validation->set_rules('Identifiant', 'Identifiant', 'required');
+        $this->form_validation->set_rules('motdepass', 'mot de passe', 'required');
 
         $serveurid = $this->input->post('serveur_id');
         if ($this->form_validation->run()) {
@@ -84,11 +83,11 @@ class Services extends MX_Controller
             $id = $this->Services_model->addservice($service);
             if ($id != null) {
                 $this->session->set_flashdata('succus', 'Nouvel Service est bien enregistrer.');
-                redirect('services/show/'.$serveurid);
+                redirect('services/show/' . $serveurid);
             }
         } else {
             $this->session->set_flashdata('error', 'Veuillez remplir tous les champs.');
-            redirect('services/create/'.$serveurid);
+            redirect('services/create/' . $serveurid);
         }
     }
 
@@ -106,19 +105,24 @@ class Services extends MX_Controller
      */
     public function update($id = null)
     {
-        $this->form_validation->set_rules('name', 'name', 'required');
+        $this->form_validation->set_rules('typeacces', 'Type acces', 'required');
+        $this->form_validation->set_rules('Identifiant', 'Identifiant', 'required');
+        $this->form_validation->set_rules('motdepass', 'mot de passe', 'required');
 
         if ($this->input->post()) {
             if ($this->form_validation->run()) {
                 $service = new stdClass();
-                $service->name = $this->input->post('name');
+                $service->name = $this->input->post('typeacces');
+                $service->identifiant = $this->input->post('Identifiant');
+                $service->password = $this->input->post('motdepass');
+                $serveurid = $this->input->post('serveur_id');
                 $res = $this->Services_model->updateById($id, $service);
                 if ($res) {
                     $this->session->set_flashdata('succus', 'Votre modification est validé');
-                    redirect('services');
+                    redirect('services/show/' . $serveurid);
                 } else {
                     $this->session->set_flashdata('error', 'valider votre données');
-                    redirect('services');
+                    redirect('services/show/' . $serveurid);
                 }
             } else {
                 $this->session->set_flashdata('error', 'valider votre données');
@@ -127,14 +131,19 @@ class Services extends MX_Controller
         }
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $start = 10;
         $data['startt'] = $start;
-        $data['id'] = $id;
+        if ($this->input->get('startt')) {
+            $data['startt'] = $this->input->get('startt');
+        }
+        $data['serveurid'] = $id;
         $services = $this->Services_model->getServiceswithserveurid($id);
         $data['services'] = $services;
-        $this->load->view('show',$data);
+        $this->load->view('show', $data);
     }
+
     /*
      * delete user from database
      */

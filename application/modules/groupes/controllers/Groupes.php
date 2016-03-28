@@ -21,6 +21,11 @@ class Groupes extends MX_Controller
 
     public function index(){
 
+    if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+		{
+            // redirect them to the home page because they must be an administrator to view this
+            return show_error('You must be an administrator to view this page.');
+        }
         $data['startt'] = 0;
         $start = 10;
         $base_url = site_url() . '/fournisseurs';

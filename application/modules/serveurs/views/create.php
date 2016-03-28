@@ -48,10 +48,6 @@
                                     <?php }?>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label>Services : </label><br>
-                                <input type="checkbox" name="ftp">
-                            </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">
