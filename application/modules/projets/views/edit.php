@@ -18,7 +18,7 @@
             <div class="col-sm-12">
                 <div class="box box-danger">
                     <div class="box-header">
-                        <h3 class="box-title">Modifier utilisateur</h3><br>
+                        <h3 class="box-title">Modifier Projet</h3><br>
                         <?php if( $this->session->flashdata('error')){ ?>
                             <div class="alert alert-danger">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -38,16 +38,6 @@
                                     <input type="text" class="form-control" name="name" value="<?php echo $projet[0]->name ;?>" />
                                 </div>
                                 <!-- /.input group -->
-                            </div>
-                            <div class="form-group">
-                                <label>Serveur</label>
-                                <select name="serveur" class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
-                                        tabindex="-1" aria-hidden="true">
-                                    <option disabled selected>Selectionner Serveur</option>
-                                    <?php foreach($serveurs as $serveur){?>
-                                        <option value="<?php echo $serveur->id?>" <?php echo ($projet[0]->id_serveur  == $serveur->id) ? "selected" : ""; ?>><?php echo $serveur->name;?></option>
-                                    <?php }?>
-                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Client</label>
@@ -73,5 +63,7 @@
     <!--  main Content -->
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
-
+<script>
+    $('.select2').select2();
+</script>
 

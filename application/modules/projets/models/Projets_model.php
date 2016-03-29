@@ -40,6 +40,22 @@ class Projets_model extends CI_Model
         }
     }
 
+    public function getServeursOfprojets($projet_id){
+        $this->db->select('*');
+        $this->db->from('serveurs');
+        // $this->db->join('projets','serveurs.id_projet = '.$id.'');
+        $this->db->where('id_projet',$projet_id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function getAllserveurswithprojet($id){
+        $this->db->select('*');
+        $this->db->from('serveurs');
+       // $this->db->join('projets','serveurs.id_projet = '.$id.'');
+        $this->db->where('id_projet',$id);
+        $query = $this->db->get();
+        return $query->result();
+    }
     public function getprojetById($id){
         $this->db->select('*');
         $this->db->from('projets');

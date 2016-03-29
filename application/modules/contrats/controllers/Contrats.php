@@ -71,6 +71,9 @@ class Contrats extends MX_Controller
     /*
     *@return void
     */
+    /**
+     *
+     */
     public function store()
     {
         $this->form_validation->set_rules('name', 'name', 'required');
@@ -99,6 +102,9 @@ class Contrats extends MX_Controller
     /*
      *@return void
      */
+    /**
+     * @param null $id
+     */
     public function edit($id = null)
     {
         $data['contrat'] = $this->Contrats_model->getContratById($id);
@@ -109,6 +115,9 @@ class Contrats extends MX_Controller
     /*
      * update user data in database table
      * @return void
+     */
+    /**
+     * @param null $id
      */
     public function update($id = null)
     {
@@ -137,6 +146,9 @@ class Contrats extends MX_Controller
     /*
      * delete user from database
      * @return void
+     */
+    /**
+     * @param null $id
      */
     public function delete($id = null)
     {

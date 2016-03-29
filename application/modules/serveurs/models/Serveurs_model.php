@@ -41,6 +41,11 @@ class Serveurs_model extends CI_Model
         return $q->result();
     }
 
+    public function updateByServeursId($serveurs =array(),$id_projet){
+        $this->db->where_in('id',$serveurs);
+        $q = $this->db->update('serveurs',$id_projet);
+        return $q;
+    }
     public function updateById($id=null,$data){
         $this->db->where('id',$id);
         $q = $this->db->update('serveurs',$data);

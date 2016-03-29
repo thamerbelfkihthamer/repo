@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Contrats
+            Serveurs
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active"><a href="<?php echo site_url('contrats'); ?>">Contrats</a></li>
+            <li class="active"><a href="<?php echo site_url('projets'); ?>">projets</a></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="pull-right">
-                                    <a href="<?php echo site_url('contrats/create') ?>">
+                                    <a href="<?php echo site_url('serveurs/create/' . $projet_id) ?>">
                                         <i class="fa fa-user-plus fa-lg"></i>
                                     </a></div>
                             </div>
@@ -51,12 +51,12 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                            <form method="get" action="<?php echo site_url('contrats/index') ?>">
+                            <form method="get" action="<?php echo site_url('projets/show/' . $projet_id) ?>">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="dataTables_length" id="example1_length"><label>
                                                 <select
-                                                     aria-controls="example1"
+                                                    aria-controls="example1"
                                                     class="form-control input-sm" onchange="this.form.submit()"
                                                     name="startt">
                                                     <option value="10" <?php echo (10 == $startt) ? "selected" : ""; ?>>
@@ -69,14 +69,16 @@
                                                         50
                                                     </option>
                                                     <option
-                                                        value="100" <?php echo (100 == $startt) ? "selected" : ""; ?>>100
+                                                        value="100" <?php echo (100 == $startt) ? "selected" : ""; ?>>
+                                                        100
                                                     </option>
                                                 </select></label></div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div id="example1_filter" class="dataTables_filter"><label>Rechercher :<input
                                                     type="search" class="form-control input-sm" placeholder=""
-                                                    aria-controls="example1" name="search" onchange="this.form.submit()"></label></div>
+                                                    aria-controls="example1" name="search"
+                                                    onchange="this.form.submit()"></label></div>
                                     </div>
                                 </div>
                             </form>
@@ -89,7 +91,11 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">Nom
+                                                style="width: 163px;">ID
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-label="Browser: activate to sort column ascending"
+                                                style="width: 202px;">Nom
                                             </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
@@ -98,20 +104,21 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php if (count($contrats) > 0) {
-                                            foreach ($contrats as $contrat) { ?>
+                                        <?php if (count($serveurs) > 0) {
+                                            foreach ($serveurs as $serveur) { ?>
 
                                                 <tr role="row" class="odd">
-                                                    <td><?php echo $contrat->name ?></td>
+                                                    <td><?php echo $serveur->name ?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('projets/show/'.$contrat->id)?>"  style="margin-right: 10px; margin-left: 5px;">
+                                                        <a href="<?php echo site_url('services/show/'.$serveur->id)?>"  style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa   fa-info-circle fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('contrats/edit/' . $contrat->id) ?>"
+                                                        <a href="<?php echo site_url('serveurs/edit/' . $serveur->id . '/' . $projet_id) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('contrats/delete/'.$contrat->id)?>" onclick=" return confirmdelete()">
+                                                        <a href="<?php echo site_url('serveurs/delete/' . $serveur->id) ?>"
+                                                           onclick=" return confirmdelete()">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -130,13 +137,13 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        Présentation  <?php echo  $start?> à <?php echo  $limit ;?> de <?php echo  count($contrats)?> entrées
+
                                     </div>
                                 </div>
                                 <div class="col-sm-7">
-                                    <?php if (count($contrats)) { ?>
+                                    <?php if (count($serveurs)) { ?>
                                         <!---PAgination --->
-                                        <?php $this->load->view("templates/admin/pagination"); ?>
+
                                         <!---End PAgination --->
                                     <?php } ?>
                                 </div>
@@ -153,7 +160,7 @@
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
 <script>
-    function confirmdelete(){
+    function confirmdelete() {
 
         var answer = confirm('voulez-vous supprimer cet founisseur');
 

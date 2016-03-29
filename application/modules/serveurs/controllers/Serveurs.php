@@ -8,6 +8,7 @@ class Serveurs extends MX_Controller
         parent::__construct();
         $this->load->model('serveurs/Serveurs_model');
         $this->load->model('fournisseurs/Fournisseurs_model');
+        $this->load->model('projets/Projets_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in())
         {
@@ -61,9 +62,10 @@ class Serveurs extends MX_Controller
     /*
      * return create  user form
      */
-    public function create()
+    public function create($projet_id =null)
     {
         $data['fournisseurs'] = $this->Fournisseurs_model->getAllfournisseurs();
+        $data['id_projet'] = $projet_id;
         $this->load->view('create',$data);
     }
 
@@ -81,6 +83,7 @@ class Serveurs extends MX_Controller
             $serveur = new stdClass();
             $serveur->name = $this->input->post('name');
             $serveur->id_fournisseur = $this->input->post('fournisseur');
+            $serveur->id_projet = $this->input->post('id_projet');
 
             $id = $this->Serveurs_model->addserveur($serveur);
             if ($id != null) {
@@ -96,10 +99,12 @@ class Serveurs extends MX_Controller
     /*
      * return edit user form
      */
-    public function edit($id = null)
+    public function edit($serveurid = null,$projetid = null)
     {
         $data['fournisseurs'] = $this->Fournisseurs_model->getAllfournisseurs();
-        $data['serveur'] = $this->Serveurs_model->getServeurById($id);
+        $data['serveur'] = $this->Serveurs_model->getServeurById($serveurid);
+        $data['projets'] = $this->Projets_model->getAllprojets();
+        $data['projetid'] = $projetid;
         $this->load->view('edit', $data);
     }
 
@@ -110,6 +115,7 @@ class Serveurs extends MX_Controller
     {
         $this->form_validation->set_rules('name', 'nom', 'required');
         $this->form_validation->set_rules('fournisseur','fournisseur','required');
+        $this->form_validation->set_rules('projet','Projet','required');
         if ($this->input->post()) {
 
             if ($this->form_validation->run()) {
@@ -117,7 +123,8 @@ class Serveurs extends MX_Controller
                 $serveur = new stdClass();
                 $serveur->name = $this->input->post('name');
                 $serveur->id_fournisseur = $this->input->post('fournisseur');
-                $res = $this->Serveurs_model->updateById($id, $serveur);
+                $serveur->id_projet = $this->input->post('projet');
+                 $res = $this->Serveurs_model->updateById($id, $serveur);
                 if ($res) {
                     $this->session->set_flashdata('succus', 'Votre modification est validé');
                     redirect('serveurs');
@@ -150,14 +157,4 @@ class Serveurs extends MX_Controller
         }
 
     }
-
-    public function ftp(){
-
-        $this->load->view('acces_views/ftp');
-    }
-
-    public function mysql(){
-        $this->load->view('acces_views/mysql');
-    }
-
 }

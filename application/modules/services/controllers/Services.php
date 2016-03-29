@@ -58,7 +58,7 @@ class Services extends MX_Controller
     /*
      * return create  user form
      */
-    public function create($id)
+    public function create($id=null)
     {
         $data['serveur_id'] = $id;
         $this->load->view('create', $data);
@@ -131,7 +131,7 @@ class Services extends MX_Controller
         }
     }
 
-    public function show($id)
+    public function show($id=null)
     {
         $start = 10;
         $data['startt'] = $start;
@@ -155,7 +155,7 @@ class Services extends MX_Controller
             $this->session->set_flashdata('succus', 'Votre suppression est validé');
             redirect('services');
         } else {
-            $this->session->set_flashdata('error', 'supprission ne marche pas ');
+            $this->session->set_flashdata('error', 'suppression ne marche pas ');
             redirect('services');
         }
 

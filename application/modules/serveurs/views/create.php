@@ -48,6 +48,7 @@
                                     <?php }?>
                                 </select>
                             </div>
+                            <input type="hidden" name="id_projet" value="<?php echo $id_projet; ?>">
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

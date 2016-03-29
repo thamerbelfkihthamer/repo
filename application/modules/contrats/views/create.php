@@ -46,11 +46,10 @@
                                         multiple="multiple" data-placeholder="Selectionner les projet de ce contrat "
                                         style="width: 100%;" tabindex="-1" aria-hidden="true">
                                     <?php foreach ($projets as $projet) { ?>
-                                    <optgroup label="<?php echo $projet->email;?>">
-                                            <option
-                                                value="<?php echo $projet->id ?>"><?php echo $projet->name; ?></option>
-                                    </optgroup>
-                                        <?php } ?>
+                                        <option
+                                            value="<?php echo $projet->id ?>"><?php echo $projet->name; ?>
+                                        </option>
+                                    <?php } ?>
                                 </select>
                             </div>
                     </div>

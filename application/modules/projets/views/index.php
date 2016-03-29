@@ -109,6 +109,9 @@
                                                     <td class="sorting_1"><?php echo $projet->id ?></td>
                                                     <td><?php echo $projet->name; ?></td>
                                                     <td>
+                                                        <a href="<?php echo site_url('projets/show/'.$projet->id)?>"  style="margin-right: 10px; margin-left: 5px;">
+                                                            <i class="fa   fa-info-circle fa-lg"></i>
+                                                        </a>
                                                         <a href="<?php echo site_url('projets/edit/' . $projet->id) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
