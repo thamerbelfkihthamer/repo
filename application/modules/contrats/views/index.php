@@ -1,5 +1,16 @@
 <?php echo Modules::run('templates/Templates/header'); ?>
 <?php echo Modules::run('templates/Templates/sidebar'); ?>
+<style>
+    .etat{
+        margin-left: 20%;
+        height: auto;
+        width: 100px;
+        background-color: #0088cc;
+        border-radius: 40%;
+        padding: 2% 15%;
+        color: #ffffff;
+    }
+</style>
 <section class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -91,6 +102,21 @@
                                                 aria-label="Rendering engine: activate to sort column descending"
                                                 style="width: 163px;">Nom
                                             </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Date début
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Date fin
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Etat
+                                            </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
                                                 >Action
@@ -103,8 +129,11 @@
 
                                                 <tr role="row" class="odd">
                                                     <td><?php echo $contrat->name ?></td>
+                                                    <td><?php echo $contrat->datedebut ?></td>
+                                                    <td><?php echo $contrat->datefin ?></td>
+                                                    <td><?php echo '<p class="etat">Traité</p>' ?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('projets/show/'.$contrat->id)?>"  style="margin-right: 10px; margin-left: 5px;">
+                                                        <a href="<?php echo site_url('contrats/show/'.$contrat->id)?>"  style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa   fa-info-circle fa-lg"></i>
                                                         </a>
                                                         <a href="<?php echo site_url('contrats/edit/' . $contrat->id) ?>"
@@ -130,7 +159,7 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        Présentation  <?php echo  $start?> à <?php echo  $limit ;?> de <?php echo  count($contrats)?> entrées
+                                        Présentation  <?php echo  $start?> à <?php   echo ($limit > count($contrats)) ? count($contrats) : $limit;?> de <?php echo  count($contrats)?> entrées
                                     </div>
                                 </div>
                                 <div class="col-sm-7">

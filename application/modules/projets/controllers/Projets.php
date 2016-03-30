@@ -9,6 +9,7 @@ class Projets extends MX_Controller
         $this->load->model('projets/Projets_model');
         $this->load->model('clients/Clients_model');
         $this->load->model('serveurs/Serveurs_model');
+        $this->load->model('contrats/Contrats_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in())
         {
@@ -65,9 +66,10 @@ class Projets extends MX_Controller
     /*
      * return create  user form
      */
-    public function create()
+    public function create($contrat_id = null)
     {
         $data['clients'] = $this->Clients_model->getAllclients();
+        $data['contrat_id'] = $contrat_id;
         $this->load->view('create',$data);
     }
 
@@ -86,6 +88,7 @@ class Projets extends MX_Controller
             $projet = new stdClass();
             $projet->name = $this->input->post('name');
             $projet->id_client = $this->input->post('client');
+            $projet->id_contrat = $this->input->post('id_contrat');
 
             $id = $this->Projets_model->addprojet($projet);
 
@@ -102,20 +105,24 @@ class Projets extends MX_Controller
     /*
      * return edit user form
      */
-    public function edit($id = null)
+    public function edit($projetid = null,$contratid = null)
     {
-        $data['projet'] = $this->Projets_model->getprojetById($id);
+        $data['projet'] = $this->Projets_model->getprojetById($projetid);
         $data['clients'] = $this->Clients_model->getAllclients();
+        $data['contrats'] = $this->Contrats_model->getAllcontrats();
+        $data['contratid'] = $contratid;
         $this->load->view('edit', $data);
     }
 
-    /*
-     * update user data in database table
+
+    /**
+     * @param null $id
      */
     public function update($id = null)
     {
         $this->form_validation->set_rules('name', 'nom', 'required');
         $this->form_validation->set_rules('client','client','required');
+        $this->form_validation->set_rules('contrat','Contrat','required');
         if ($this->input->post()) {
 
             if ($this->form_validation->run()) {
@@ -123,6 +130,7 @@ class Projets extends MX_Controller
                 $projet = new stdClass();
                 $projet->name = $this->input->post('name');
                 $projet->id_client = $this->input->post('client');
+                $projet->id_contrat = $this->input->post('contrat');
                 $res = $this->Projets_model->updateById($id, $projet);
                 if ($res) {
                     $this->session->set_flashdata('succus', 'Votre modification est validé');

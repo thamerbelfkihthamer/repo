@@ -40,6 +40,40 @@
                                 <!-- /.input group -->
                             </div>
                             <div class="form-group">
+                                <label>Date début contrat</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa  fa-info"></i>
+                                    </div>
+                                    <input type="date" class="form-control" name="datedebut" value="<?php echo $contrat[0]->datedebut?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Date Fin contrat</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa  fa-info"></i>
+                                    </div>
+                                    <input type="date" class="form-control" name="datefin" value="<?php echo $contrat[0]->datefin?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Etat Payement</label>
+                                <select name="projets[]" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Selectionner les projet de ce contrat " style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                    <?php foreach($projets as $projet){?>
+                                        <option value="<?php echo $projet->id?>" <?php echo ($contrat[0]->id == $projet->id_contrat) ? "selected" : ""; ?>><?php echo $projet->name; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Etat Hebergement</label>
+                                <select name="projets[]" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Selectionner les projet de ce contrat " style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                    <?php foreach($projets as $projet){?>
+                                        <option value="<?php echo $projet->id?>" <?php echo ($contrat[0]->id == $projet->id_contrat) ? "selected" : ""; ?>><?php echo $projet->name; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label>Projet</label>
                                 <select name="projets[]" class="form-control select2 select2-hidden-accessible" multiple="" data-placeholder="Selectionner les projet de ce contrat " style="width: 100%;" tabindex="-1" aria-hidden="true">
                                     <?php foreach($projets as $projet){?>

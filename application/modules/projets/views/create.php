@@ -53,6 +53,7 @@
                                     <?php } ?>
                                 </select>
                             </div>
+                            <input type="hidden" name="id_contrat" value="<?php echo $contrat_id; ?>">
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

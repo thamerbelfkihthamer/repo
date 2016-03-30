@@ -137,7 +137,7 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        Présentation  <?php echo  $start?> à <?php echo  $limit ;?> de <?php echo  count($fournisseurs)?> entrées
+                                        Présentation  <?php echo  $start?> à <?php   echo ($limit > count($fournisseurs)) ? count($fournisseurs) : $limit;?> de <?php echo  count($fournisseurs)?> entrées
                                     </div>
                                 </div>
                                 <div class="col-sm-7">

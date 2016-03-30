@@ -64,7 +64,6 @@ class Contrats extends MX_Controller
     public function create()
     {
         $data['projets'] = $this->Projets_model->getAllprojetswithclient();
-        $data['clients'] = $this->Clients_model->getallclients();
         $this->load->view('create',$data);
     }
 
@@ -78,9 +77,13 @@ class Contrats extends MX_Controller
     {
         $this->form_validation->set_rules('name', 'name', 'required');
         $this->form_validation->set_rules('projets[]','projets','required');
+        $this->form_validation->set_rules('datedebut','date début contrat','required');
+        $this->form_validation->set_rules('datefin','date fin contrat','required');
         if ($this->form_validation->run()) {
             $contrat = new stdClass();
             $contrat->name = $this->input->post('name');
+            $contrat->datedebut = $this->input->post('datedebut');
+            $contrat->datefin = $this->input->post('datefin');
             $projets = $this->input->post('projets');
 
             $id = $this->Contrats_model->addcontrat($contrat);
@@ -119,16 +122,22 @@ class Contrats extends MX_Controller
     /**
      * @param null $id
      */
-    public function update($id = null)
+    public function update($contratid = null)
     {
         $this->form_validation->set_rules('name', 'name', 'required');
         $this->form_validation->set_rules('projets[]','projets','required');
+        $this->form_validation->set_rules('datedebut','date début contrat','required');
+        $this->form_validation->set_rules('datefin','date fin contrat','required');
 
         if ($this->input->post()) {
             if ($this->form_validation->run()) {
                 $contrat = new stdClass();
                 $contrat->name = $this->input->post('name');
-                $res = $this->Contrats_model->updateById($id, $contrat);
+                $contrat->datedebut = $this->input->post('datedebut');
+                $contrat->datefin = $this->input->post('datefin');
+                $res = $this->Contrats_model->updateById($contratid, $contrat);
+                $projets = $this->input->post('projets');
+                $updateprojets = $this->Projets_model->Deleteprojetfromcontrat($contratid,$projets);
                 if ($res) {
                     $this->session->set_flashdata('succus', 'Votre modification est validé');
                     redirect('contrats');
@@ -138,9 +147,21 @@ class Contrats extends MX_Controller
                 }
             } else {
                 $this->session->set_flashdata('error', 'valider votre données');
-                $this->edit($id);
+                $this->edit($contratid);
             }
         }
+    }
+
+    public function show($contrat_id){
+        $start = 10;
+        $data['startt'] = $start;
+        if ($this->input->get('startt')) {
+            $data['startt'] = $this->input->get('startt');
+        }
+
+        $data['projets'] = $this->Projets_model->getProjetsOfcontrats($contrat_id);
+        $data['contrat_id'] = $contrat_id;
+        $this->load->view('show',$data);
     }
 
     /*
