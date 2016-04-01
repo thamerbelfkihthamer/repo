@@ -7,6 +7,7 @@ class Services extends MX_Controller
     {
         parent::__construct();
         $this->load->model('services/Services_model');
+        $this->load->model('serveurs/Serveurs_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in()) {
             // redirect them to the login page
@@ -55,12 +56,13 @@ class Services extends MX_Controller
     }
 
 
-    /*
-     * return create  user form
+    /**
+     * @param null $id
      */
     public function create($id=null)
     {
         $data['serveur_id'] = $id;
+        $data['serveurs'] = $this->Serveurs_model->getAllserveurs();
         $this->load->view('create', $data);
     }
 
@@ -96,6 +98,7 @@ class Services extends MX_Controller
      */
     public function edit($id = null)
     {
+        $data['serveurs'] = $this->Serveurs_model->getAllserveurs();
         $data['service'] = $this->Services_model->getServiceById($id);
         $this->load->view('edit', $data);
     }

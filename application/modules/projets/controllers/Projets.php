@@ -69,6 +69,7 @@ class Projets extends MX_Controller
     public function create($contrat_id = null)
     {
         $data['clients'] = $this->Clients_model->getAllclients();
+        $data['contrats'] = $this->Contrats_model->getAllcontrats();
         $data['contrat_id'] = $contrat_id;
         $this->load->view('create',$data);
     }

@@ -59,6 +59,17 @@
                                 <!-- /.input group -->
                                 <input type="hidden"  class="form-control" name="serveur_id" value="<?php echo $service[0]->serveur_id?>">
                             </div>
+                            <!--
+                            <div class="form-group">
+                                <label>Serveur </label>
+                                <select name="fournisseur" class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
+                                        tabindex="-1" aria-hidden="true">
+                                    <?php foreach($serveurs as $serveur){?>
+                                        <option value="<?php echo $serveur->id?>" <?php echo ($serveur->id == $service[0]->serveur_id) ? "selected" : ""; ?> ><?php echo $serveur->name?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                            -->
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

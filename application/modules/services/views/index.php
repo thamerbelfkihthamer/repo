@@ -91,6 +91,16 @@
                                                 aria-label="Rendering engine: activate to sort column descending"
                                                 style="width: 163px;">Nom
                                             </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Identifiant
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Mot de passe
+                                            </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
                                                 >Action
@@ -103,6 +113,8 @@
 
                                                 <tr role="row" class="odd">
                                                     <td><?php echo $service->name ?></td>
+                                                    <td><?php echo $service->identifiant ?></td>
+                                                    <td><?php echo $service->password ?></td>
                                                     <td>
                                                         <a href="<?php echo site_url('services/edit/' . $service->id) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
@@ -127,7 +139,7 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        Présentation  <?php echo  $start?> à<?php   echo ($limit > count($services)) ? count($services) : $limit;?> de <?php echo  count($services)?> entrées
+                                        Présentation  <?php echo  $start?> à <?php   echo ($limit > count($services)) ? count($services) : $limit;?> de <?php echo  count($services)?> entrées
                                     </div>
                                 </div>
                                 <div class="col-sm-7">

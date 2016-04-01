@@ -65,17 +65,20 @@ class Serveurs extends MX_Controller
     public function create($projet_id =null)
     {
         $data['fournisseurs'] = $this->Fournisseurs_model->getAllfournisseurs();
+        $data['projets'] = $this->Projets_model->getAllprojets();
         $data['id_projet'] = $projet_id;
         $this->load->view('create',$data);
     }
 
-    /*
-    * add user data in database user table
-    */
+
+    /**
+     *
+     */
     public function store()
     {
         $this->form_validation->set_rules('name', 'nom', 'required');
         $this->form_validation->set_rules('fournisseur','fournisseur','required');
+        $this->form_validation->set_rules('id_projet','id projet','required');
         /*
          *
          */

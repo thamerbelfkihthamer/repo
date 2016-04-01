@@ -15,10 +15,9 @@ class Fournisseurs extends MX_Controller
         }
     }
 
-    /*
-     * return all serveurs
-     * @api
-     * @return void
+
+    /**
+     *
      */
     public function  index()
     {

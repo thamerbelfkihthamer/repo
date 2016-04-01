@@ -1,16 +1,5 @@
 <?php echo Modules::run('templates/Templates/header'); ?>
 <?php echo Modules::run('templates/Templates/sidebar'); ?>
-<style>
-    .etat{
-        margin-left: 20%;
-        height: auto;
-        width: 100px;
-        background-color: #0088cc;
-        border-radius: 40%;
-        padding: 2% 15%;
-        color: #ffffff;
-    }
-</style>
 <section class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -131,7 +120,7 @@
                                                     <td><?php echo $contrat->name ?></td>
                                                     <td><?php echo $contrat->datedebut ?></td>
                                                     <td><?php echo $contrat->datefin ?></td>
-                                                    <td><?php echo '<p class="etat">Traité</p>' ?></td>
+                                                    <td><?php echo '<span class="pull-center badge bg-blue">Traité</span>' ?></td>
                                                     <td>
                                                         <a href="<?php echo site_url('contrats/show/'.$contrat->id)?>"  style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa   fa-info-circle fa-lg"></i>

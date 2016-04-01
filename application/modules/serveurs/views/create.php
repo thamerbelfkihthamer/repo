@@ -48,7 +48,23 @@
                                     <?php }?>
                                 </select>
                             </div>
-                            <input type="hidden" name="id_projet" value="<?php echo $id_projet; ?>">
+                            <?php if($id_projet == null){?>
+                                <div class="form-group">
+                                    <label>Projet</label>
+                                    <select name="id_projet" class="form-control select2 select2-hidden-accessible choosen"
+                                            style="width: 100%;"
+                                            tabindex="-1" aria-hidden="true">
+                                        <option disabled selected>Selectionner client</option>
+                                        <?php foreach ($projets as $projet) { ?>
+                                            <option value="<?php echo $projet->id ?>"><?php echo $projet->name;
+                                                ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            <?php }else{?>
+                                <input type="hidden" name="id_projet" value="<?php echo $id_projet; ?>">
+                            <?php } ?>
+
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

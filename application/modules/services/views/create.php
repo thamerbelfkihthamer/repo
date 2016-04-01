@@ -62,8 +62,23 @@
                                 </div>
                                 <!-- /.input group -->
                             </div>
+                            <?php if($serveur_id == null){?>
+                            <div class="form-group">
+                                <label>Serveur</label>
+                                <select name="serveur_id" class="form-control select2 select2-hidden-accessible choosen"
+                                        style="width: 100%;"
+                                        tabindex="-1" aria-hidden="true">
+                                    <option disabled selected>Selectionner client</option>
+                                    <?php foreach ($serveurs as $serveur) { ?>
+                                        <option value="<?php echo $serveur->id ?>"><?php echo $serveur->name;
+                                            ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <?php }else{?>
                             <input type="hidden" class="form-control" name="serveur_id"
                                    value="<?php echo $serveur_id; ?>">
+                            <?php } ?>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">
