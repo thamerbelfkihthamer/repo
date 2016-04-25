@@ -57,7 +57,7 @@
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
   </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+  <body class="hold-transition skin-blue sidebar-mini" ng-app="medianetapp">
   <div class="wrapper">
 
       <header class="main-header">

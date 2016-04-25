@@ -1,6 +1,9 @@
 <?php echo Modules::run('templates/Templates/header'); ?>
 <?php echo Modules::run('templates/Templates/sidebar'); ?>
-<section class="content-wrapper">
+<section class="content-wrapper" ng-controller="ClientController">
+    <?php $this->load->view('clients/create')?>
+    <?php $this->load->view('clients/edit')?>
+    <?php $this->load->view('clients/show')?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -42,7 +45,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="pull-right">
-                                    <a href="<?php echo site_url('clients/create') ?>">
+                                    <a href="" data-toggle="modal" data-target="#myModal">
                                         <i class="fa fa-user-plus fa-lg"></i>
                                     </a></div>
                             </div>
@@ -121,11 +124,11 @@
                                                     <td><?php echo $client->email ?></td>
                                                    <td> <?php echo $client->tel?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('clients/edit/' . $client->id) ?>"
-                                                           style="margin-right: 10px; margin-left: 5px;">
+                                                        <a href=""
+                                                           style="margin-right: 10px; margin-left: 5px;" data-toggle="modal" data-target="#editModal" ng-click="editclient(<?php echo $client->id;?>)">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('clients/delete/'.$client->id)?>" onclick=" return confirmdelete()">
+                                                        <a href="" data-toggle="modal" data-target="#deleteModal" ng-click="showdeleteclient(<?php echo $client->id; ?>)">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -140,7 +143,6 @@
                                 </div>
                             </div>
                             <br>
-
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
@@ -166,6 +168,7 @@
     <!--  main Content -->
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
+<script src="<?php echo base_url(); ?>application/assets/public/Clients/client.js"></script>
 <script>
     function confirmdelete(){
 
@@ -173,7 +176,6 @@
 
         return answer;
     }
-
 </script>
 
 

@@ -1,5 +1,12 @@
 <?php echo Modules::run('templates/Templates/header'); ?>
 <?php echo Modules::run('templates/Templates/sidebar'); ?>
+<style>
+    .foo {
+        width: 1000px;
+        height: 10000px;
+        overflow-y: hidden;
+    }
+</style>
 <section class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -13,7 +20,11 @@
     </section>
     <!-- Main content -->
     <section class="content">
-
+        <iframe src="http://localhost:8082/"
+                class="foo"
+                scrolling="no"
+                seamless="seamless">
+        </iframe>
     </section>
     <!--  main Content -->
 </section><!-- Content Wrapper-->

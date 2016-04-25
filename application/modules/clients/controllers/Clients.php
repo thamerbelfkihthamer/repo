@@ -9,8 +9,8 @@ class Clients extends MX_Controller
         $this->load->model('clients/Clients_model');
         $this->load->helper('pagination');
         $this->load->library('ion_auth');
-        if (!$this->ion_auth->logged_in())
-        {
+        $this->load->library('session');
+        if (!$this->ion_auth->logged_in()) {
             // redirect them to the login page
             redirect('auth/login', 'refresh');
         }
@@ -71,24 +71,25 @@ class Clients extends MX_Controller
     */
     public function store()
     {
-        $this->form_validation->set_rules('nom', 'nom', 'required');
-        $this->form_validation->set_rules('prenom', 'prenom', 'required');
-        $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('tel', 'telephone ', 'required');
+        // $this->form_validation->set_rules('nom', 'nom', 'required');
+        //$this->form_validation->set_rules('prenom', 'prenom', 'required');
+        //$this->form_validation->set_rules('email', 'email', 'required');
+        //$this->form_validation->set_rules('tel', 'telephone ', 'required');
         /*
          *
          */
-        if ($this->form_validation->run()) {
-            $client = new stdClass();
-            $client->lastname = $this->input->post('nom');
-            $client->firstname = $this->input->post('prenom');
-            $client->email = $this->input->post('email');
-            $client->tel = $this->input->post('tel');
-            $id = $this->Clients_model->addclient($client);
-            if ($id != null) {
-                $this->session->set_flashdata('succus', 'Nouvel client est bien enregistrer.');
-                redirect('clients');
-            }
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+
+        $client = new stdClass();
+        $client->lastname = $request->nom;
+        $client->firstname = $request->prenom;
+        $client->email = $request->email;
+        $client->tel = $request->tel;
+        $id = $this->Clients_model->addclient($client);
+        if ($id != null) {
+            $this->session->set_flashdata('succus', 'Nouvel client est bien enregistrer.');
+            redirect('clients');
         } else {
             $this->session->set_flashdata('error', 'Veuillez remplir tous les champs.');
             redirect('clients/create');
@@ -98,62 +99,52 @@ class Clients extends MX_Controller
     /*
      * return edit client form
      */
-    public function edit($id = null)
+    public function edit()
     {
-        $data['client'] = $this->Clients_model->getclientById($id);
-        $this->load->view('edit', $data);
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $id = $request->id;
+        $client = $this->Clients_model->getclientById($id);
+        echo json_encode($client);
     }
 
     /*
      * update client data in database table
      */
-    public function update($id = null)
+    public function update()
     {
-        $this->form_validation->set_rules('nom', 'nom', 'required');
-        $this->form_validation->set_rules('prenom', 'prenom', 'required');
-        $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('tel', 'Telephone', 'required');
-        if ($this->input->post()) {
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
 
-            if ($this->form_validation->run()) {
+        $client = new stdClass();
+        $client->lastname = $request->nom;
+        $client->firstname = $request->prenom;
+        $client->email = $request->email;
+        $client->tel = $request->tel;
+        $id = $request->id;
 
-                $client = new stdClass();
-                $client->lastname = $this->input->post('nom');
-                $client->firstname = $this->input->post('prenom');
-                $client->email = $this->input->post('email');
-                $client->tel = $this->input->post('tel');
-
-
-                $res = $this->Clients_model->updateById($id, $client);
-                if ($res) {
-                    $this->session->set_flashdata('succus', 'Votre modification est validé');
-                    redirect('clients');
-                } else {
-                    $this->session->set_flashdata('error', 'valider votre données');
-                    redirect('clients');
-                }
-
-            } else {
-                $this->session->set_flashdata('error', 'valider votre donnéesss');
-                $this->edit($id);
-            }
+        $res = $this->Clients_model->updateById($id, $client);
+        if ($res) {
+            echo json_encode($res);
         }
+
 
     }
 
     /*
      * delete client from database
      */
-    public function delete($id = null)
+    public function delete()
     {
-        $res = $this->Clients_model->deleteById($id);
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+
+        $res = $this->Clients_model->deleteById($request->id);
 
         if ($res) {
-            $this->session->set_flashdata('succus', 'Votre suppression est validé');
-            redirect('clients');
+           echo $res;
         } else {
-            $this->session->set_flashdata('error', 'supprission ne marche pas ');
-            redirect('clients');
+            echo $res;
         }
 
     }

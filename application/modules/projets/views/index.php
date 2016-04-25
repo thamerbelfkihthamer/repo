@@ -86,16 +86,16 @@
                                            role="grid" aria-describedby="example1_info">
                                         <thead>
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                            <th class="sorting_asc col-xs-1" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">ID
+                                               >ID
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="Browser: activate to sort column ascending"
                                                 style="width: 202px;">Nom
                                             </th>
-                                            <th tabindex="0" aria-controls="example1" rowspan="1"
+                                            <th tabindex="0" aria-controls="example1" rowspan="1"  class="col-xs-2"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
                                                 >Action
                                             </th>
