@@ -1,6 +1,9 @@
 <?php echo Modules::run('templates/Templates/header'); ?>
 <?php echo Modules::run('templates/Templates/sidebar'); ?>
-<section class="content-wrapper">
+<section class="content-wrapper" ng-controller="FournisseursController">
+    <?php $this->load->view('fournisseurs/create')?>
+    <?php  $this->load->view('fournisseurs/edit')?>
+    <?php $this->load->view('fournisseurs/delete')?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -42,7 +45,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="pull-right">
-                                    <a href="<?php echo site_url('fournisseurs/create') ?>">
+                                    <a href="" data-toggle="modal" data-target="#createModal">
                                         <i class="fa fa-user-plus fa-lg"></i>
                                     </a></div>
                             </div>
@@ -114,11 +117,10 @@
                                                     <td><?php echo $fournisseur->email ?></td>
                                                     <td><?php echo $fournisseur->tel ?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('fournisseurs/edit/' . $fournisseur->id) ?>"
-                                                           style="margin-right: 10px; margin-left: 5px;">
+                                                        <a href="" style="margin-right: 10px; margin-left: 5px;" data-toggle="modal" data-target="#editModal" ng-click="editfournisseur(<?php echo $fournisseur->id;?>)">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('fournisseurs/delete/'.$fournisseur->id)?>" onclick=" return confirmdelete()">
+                                                        <a href="" data-toggle="modal" data-target="#deleteModal" ng-click="showdeletefournisseur(<?php echo $fournisseur->id; ?>)">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -159,14 +161,7 @@
     <!--  main Content -->
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
-<script>
-    function confirmdelete(){
+<script src="<?php echo base_url(); ?>application/assets/public/Fournisseurs/Fournisseurs.js"></script>
 
-        var answer = confirm('voulez-vous supprimer cet founisseur');
-
-        return answer;
-    }
-
-</script>
 
 

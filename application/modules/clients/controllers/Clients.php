@@ -71,13 +71,7 @@ class Clients extends MX_Controller
     */
     public function store()
     {
-        // $this->form_validation->set_rules('nom', 'nom', 'required');
-        //$this->form_validation->set_rules('prenom', 'prenom', 'required');
-        //$this->form_validation->set_rules('email', 'email', 'required');
-        //$this->form_validation->set_rules('tel', 'telephone ', 'required');
-        /*
-         *
-         */
+
         $postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
 

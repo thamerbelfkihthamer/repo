@@ -3,7 +3,7 @@
  */
 var app = angular.module("medianetapp", []);
 
-app.controller("ClientController", ['$scope', '$http', function ($scope, $http) {
+app.controller("ClientController", ['$scope', '$http', '$location', function ($scope, $http, $location) {
 
     $scope.name = "";
     $scope.prenom = "";
@@ -12,13 +12,13 @@ app.controller("ClientController", ['$scope', '$http', function ($scope, $http) 
 
 
     /*
-      Create Method
+     Create Method
      */
-    $scope.createClient = function () {
 
+    $scope.createClient = function () {
         if ($scope.name != "" && $scope.prenon != "" && $scope.email != "" && $scope.tel != "") {
             $scope.modal = "modal";
-            $http.post(window.location.href+"/store", {
+            $http.post(window.location.href + "/store", {
                 "nom": $scope.name,
                 "prenom": $scope.prenom,
                 "email": $scope.email,
@@ -41,10 +41,10 @@ app.controller("ClientController", ['$scope', '$http', function ($scope, $http) 
     }
 
     /*
-    Edit load view
+     Edit load view
      */
     $scope.editclient = function (id) {
-        $http.post(window.location.href+"/edit",
+        $http.post(window.location.href + "/edit",
             {
                 "id": id
             }).success(function (data, status, headers, config) {
@@ -57,12 +57,12 @@ app.controller("ClientController", ['$scope', '$http', function ($scope, $http) 
     }
 
     /*
-       Update client
+     Update client
      */
     $scope.updateClient = function () {
         if ($scope.name != "" && $scope.prenon != "" && $scope.email != "" && $scope.tel != "") {
             $scope.modal = "modal";
-            $http.post(window.location.href+"/update", {
+            $http.post(window.location.href + "/update", {
                 "id": $scope.id,
                 "nom": $scope.name,
                 "prenom": $scope.prenom,
@@ -88,8 +88,9 @@ app.controller("ClientController", ['$scope', '$http', function ($scope, $http) 
     /*
      show delete modal client
      */
-    $scope.showdeleteclient = function(id){
+    $scope.showdeleteclient = function (id) {
 
+        console.log($location.path());
         $scope.id = id;
     }
 
@@ -99,11 +100,11 @@ app.controller("ClientController", ['$scope', '$http', function ($scope, $http) 
     $scope.delete = function () {
         console.log($scope.id);
         $scope.modal = "modal";
-        $http.post(window.location.href+"/delete",
+        $http.post(window.location.href + "/delete",
             {
                 "id": $scope.id
             }).success(function (data, status, headers, config) {
-             console.log(data);
+                console.log(data);
                 swal("Merci!", "Nouvel client est bien enregistrer !", "success");
             })
     }

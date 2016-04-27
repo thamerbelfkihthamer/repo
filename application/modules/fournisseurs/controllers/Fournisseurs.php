@@ -8,8 +8,7 @@ class Fournisseurs extends MX_Controller
         parent::__construct();
         $this->load->model('fournisseurs/Fournisseurs_model');
         $this->load->helper('pagination');
-        if (!$this->ion_auth->logged_in())
-        {
+        if (!$this->ion_auth->logged_in()) {
             // redirect them to the login page
             redirect('auth/login', 'refresh');
         }
@@ -68,35 +67,30 @@ class Fournisseurs extends MX_Controller
     */
     public function store()
     {
-        $this->form_validation->set_rules('name', 'name', 'required');
-        $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('tel','telephone','required');
-        /*
-         *
-         */
-        if ($this->form_validation->run()) {
-            $fournisseur = new stdClass();
-            $fournisseur->name = $this->input->post('name');
-            $fournisseur->email = $this->input->post('email');
-            $fournisseur->tel = $this->input->post('tel');
-            $id = $this->Fournisseurs_model->addfournisseur($fournisseur);
-            if ($id != null) {
-                $this->session->set_flashdata('succus', 'Nouvel utilisateur est bien enregistrer.');
-                redirect('fournisseurs');
-            }
-        } else {
-            $this->session->set_flashdata('error', 'Veuillez remplir tous les champs.');
-            redirect('fournisseurs/create');
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+
+        $fournisseur = new stdClass();
+        $fournisseur->name = $request->name;
+        $fournisseur->email = $request->email;
+        $fournisseur->tel = $request->tel;
+        $id = $this->Fournisseurs_model->addfournisseur($fournisseur);
+        if ($id != null) {
+            $this->session->set_flashdata('succus', 'Nouvel utilisateur est bien enregistrer.');
+            redirect('fournisseurs');
         }
+
     }
 
     /*
      * return edit user form
      */
-    public function edit($id = null)
+    public function edit()
     {
-        $data['fournisseur'] = $this->Fournisseurs_model->getFournisseurById($id);
-        $this->load->view('edit', $data);
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $fournisseur = $this->Fournisseurs_model->getFournisseurById($request->id);
+        echo json_encode($fournisseur);
     }
 
     /*
@@ -104,43 +98,34 @@ class Fournisseurs extends MX_Controller
      */
     public function update($id = null)
     {
-        $this->form_validation->set_rules('name', 'name', 'required');
-        $this->form_validation->set_rules('email', 'email', 'required');
-        $this->form_validation->set_rules('tel','telephone','required');
-        if ($this->input->post()) {
-            if ($this->form_validation->run()) {
-                $fournisseur = new stdClass();
-                $fournisseur->name = $this->input->post('name');
-                $fournisseur->email = $this->input->post('email');
-                $fournisseur->tel = $this->input->post('tel');
-                $res = $this->Fournisseurs_model->updateById($id, $fournisseur);
-                if ($res) {
-                    $this->session->set_flashdata('succus', 'Votre modification est validé');
-                    redirect('fournisseurs');
-                } else {
-                    $this->session->set_flashdata('error', 'valider votre données');
-                    redirect('fournisseurs');
-                }
-            } else {
-                $this->session->set_flashdata('error', 'valider votre données');
-                $this->edit($id);
-            }
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+
+        $fournisseur = new stdClass();
+        $fournisseur->name = $request->name;
+        $fournisseur->email = $request->email;
+        $fournisseur->tel = $request->tel;
+        $res = $this->Fournisseurs_model->updateById($request->id, $fournisseur);
+        if ($res) {
+            echo json_encode($res);
         }
+
     }
+
 
     /*
      * delete user from database
      */
-    public function delete($id = null)
+    public function delete()
     {
-        $res = $this->Fournisseurs_model->deleteById($id);
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+        $res = $this->Fournisseurs_model->deleteById($request->id);
 
         if ($res) {
-            $this->session->set_flashdata('succus', 'Votre suppression est validé');
-            redirect('fournisseurs');
+            echo $res;
         } else {
-            $this->session->set_flashdata('error', 'supprission ne marche pas ');
-            redirect('fournisseurs');
+            echo $res;
         }
 
     }

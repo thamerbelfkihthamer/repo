@@ -3,7 +3,7 @@
 <section class="content-wrapper" ng-controller="ClientController">
     <?php $this->load->view('clients/create')?>
     <?php $this->load->view('clients/edit')?>
-    <?php $this->load->view('clients/show')?>
+    <?php $this->load->view('clients/delete')?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -169,13 +169,6 @@
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
 <script src="<?php echo base_url(); ?>application/assets/public/Clients/client.js"></script>
-<script>
-    function confirmdelete(){
 
-        var answer = confirm('voulez-vous supprimer cet utilisateurs');
-
-        return answer;
-    }
-</script>
 
 

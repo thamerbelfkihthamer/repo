@@ -1,78 +1,56 @@
-<?php echo Modules::run('templates/Templates/header'); ?>
-<?php echo Modules::run('templates/Templates/sidebar'); ?>
-<section class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            Fournisseurs
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="<?php echo site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active"><a href="<?php echo site_url('fournisseurs'); ?>">Fournisseurs</a></li>
-            <li class="active"><a href="<?php echo site_url('fournisseurs/edit'); ?>">Modification</a></li>
-        </ol>
-    </section>
-    <!-- Main content -->
-    <section class="content">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="box box-danger">
-                    <div class="box-header">
-                        <h3 class="box-title">Modifier Fournisseur</h3><br>
-                        <?php if( $this->session->flashdata('error')){ ?>
-                            <div class="alert alert-danger">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <?php echo $this->session->flashdata('error'); ?>
-                            </div>
-                        <?php }?>
+<!-- Modal -->
+<div class="modal fade" id="editModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center">Modifier Fournisseur</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nom</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa  fa-info"></i>
+                        </div>
+                        <input type="text" class="form-control" name="name" ng-model="name" style="box-shadow:{{bsname}}">
                     </div>
-                    <div class="box-body">
-                        <form action="<?php echo site_url('fournisseurs/update/'.$fournisseur[0]->id) ?>" method="post">
-                            <!-- IP mask -->
-                            <div class="form-group">
-                                <label>Nom</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa  fa-info"></i>
-                                    </div>
-                                    <input type="text" class="form-control" name="name" value="<?php echo $fournisseur[0]->name ;?>" />
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa  fa-envelope-o"></i>
-                                    </div>
-                                    <input type="email" class="form-control" name="email" value="<?php echo $fournisseur[0]->email ?>">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <div class="form-group">
-                                <label>telephone</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa  fa-phone"></i>
-                                    </div>
-                                    <input type="tel" class="form-control" name="tel"  value="<?php echo $fournisseur[0]->tel ?>">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                            <!-- /.form group -->
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer text-center">
-                        <button type="submit" class="btn btn-primary">Enregistrer</button>
-                    </div>
-                    </form>
+                    <!-- /.input group -->
                 </div>
-                <!-- /.box -->
+                <div class="form-group">
+                    <label>Email</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa  fa-envelope-o"></i>
+                        </div>
+                        <input type="email" class="form-control" name="email" ng-model="email" style="box-shadow:{{bsemail}}">
+                    </div>
+                    <!-- /.input group -->
+                </div>
+                <div class="form-group">
+                    <label>telephone</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa  fa-phone"></i>
+                        </div>
+                        <input type="tel" class="form-control" name="tel" ng-model="tel" style="box-shadow:{{bstel}}">
+                    </div>
+                    <!-- /.input group -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary pull-left" ng-click="updateFournisseur()"
+                        data-dismiss="{{modal}}">Modifier
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-    </section>
-    <!--  main Content -->
-</section><!-- Content Wrapper-->
-<?php echo Modules::run('templates/Templates/footer'); ?>
+    </div>
+</div>
+
+
+
+
 
 
