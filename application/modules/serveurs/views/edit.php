@@ -39,6 +39,7 @@
                                 </div>
                                 <!-- /.input group -->
                             </div>
+                            <!--
                             <div class="form-group">
                                 <label>Projet</label>
                                 <select name="projet" class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
@@ -49,6 +50,7 @@
                                     <?php }?>
                                 </select>
                             </div>
+                            -->
                             <div class="form-group">
                                 <label>Fournisseur</label>
                                 <select name="fournisseur" class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"

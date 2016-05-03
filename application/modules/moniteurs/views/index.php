@@ -10,22 +10,20 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Dashboard
+            Moniteur
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo  site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="<?php echo  site_url('dashboard'); ?>">Dashboard</a></li>
+            <li><a href="<?php echo  site_url('moniteurs'); ?>">Moniteur</a></li>
         </ol>
     </section>
     <!-- Main content -->
     <section class="content">
-        <!--
                 <iframe src="http://192.168.10.129:8082/"
                 class="foo"
                 scrolling="no"
                 seamless="seamless" style="padding: 20px; border: 0px" onload="resizeIframe(this)">
         </iframe>
-        -->
     </section>
     <!--  main Content -->
 </section><!-- Content Wrapper-->

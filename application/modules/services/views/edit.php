@@ -59,7 +59,7 @@
                                 <!-- /.input group -->
                                 <input type="hidden"  class="form-control" name="serveur_id" value="<?php echo $service[0]->serveur_id?>">
                             </div>
-                            <!--
+
                             <div class="form-group">
                                 <label>Serveur </label>
                                 <select name="fournisseur" class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
@@ -69,7 +69,6 @@
                                     <?php }?>
                                 </select>
                             </div>
-                            -->
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

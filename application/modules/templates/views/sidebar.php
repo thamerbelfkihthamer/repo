@@ -26,6 +26,11 @@
                 </a>
             </li>
             <li class="treeview">
+                <a href="<?php echo site_url('moniteurs') ?>">
+                    <i class="fa fa-globe"></i> <span>Moniteurs</span>
+                </a>
+            </li>
+            <li class="treeview">
                 <a href="<?php echo site_url('projets') ?>">
                     <i class="fa fa-book"></i> <span>Projets</span>
                 </a>
@@ -37,7 +42,7 @@
             </li>
             <li class="treeview">
                 <a href="<?php echo site_url('services') ?>">
-                    <i class="fa fa-server"></i> <span>Services</span>
+                    <i class="fa fa-server"></i> <span>Accés</span>
                 </a>
             </li>
             <li class="treeview">
@@ -56,10 +61,16 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="<?php echo site_url('historiques') ?>">
-                    <i class="fa fa-history"></i> <span>Historiques</span>
+                <a href="<?php echo site_url('groupes') ?>">
+                    <i class="fa fa-group"></i> <span>Groupes</span>
                 </a>
             </li>
+            <li class="treeview">
+                <a href="<?php echo site_url('auth') ?>">
+                    <i class="fa fa-circle-o text-yellow"></i> <span>Utilisateurs</span>
+                </a>
+            </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-group"></i>
@@ -75,6 +86,7 @@
                         </a></li>
                 </ul>
             </li>
+
         </ul>
     </section>
     <!-- /.sidebar -->

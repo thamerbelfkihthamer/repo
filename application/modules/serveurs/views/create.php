@@ -48,6 +48,7 @@
                                     <?php }?>
                                 </select>
                             </div>
+                            <!--
                             <?php if($id_projet == null){?>
                                 <div class="form-group">
                                     <label>Projet</label>
@@ -64,7 +65,7 @@
                             <?php }else{?>
                                 <input type="hidden" name="id_projet" value="<?php echo $id_projet; ?>">
                             <?php } ?>
-
+-->
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

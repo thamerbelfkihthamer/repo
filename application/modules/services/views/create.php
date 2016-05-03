@@ -68,7 +68,7 @@
                                 <select name="serveur_id" class="form-control select2 select2-hidden-accessible choosen"
                                         style="width: 100%;"
                                         tabindex="-1" aria-hidden="true">
-                                    <option disabled selected>Selectionner client</option>
+                                    <option disabled selected>Selectionner serveur</option>
                                     <?php foreach ($serveurs as $serveur) { ?>
                                         <option value="<?php echo $serveur->id ?>"><?php echo $serveur->name;
                                             ?></option>
