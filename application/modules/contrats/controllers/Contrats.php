@@ -9,6 +9,7 @@ class Contrats extends MX_Controller
         $this->load->model('contrats/Contrats_model');
         $this->load->model('projets/Projets_model');
         $this->load->model('clients/Clients_model');
+        $this->load->model('notifications/Notifications_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in())
         {
@@ -63,8 +64,8 @@ class Contrats extends MX_Controller
      */
     public function create()
     {
-        $data['projets'] = $this->Projets_model->getAllprojetswithclient();
-        $this->load->view('create',$data);
+
+        $this->load->view('create');
     }
 
     /*
@@ -76,29 +77,32 @@ class Contrats extends MX_Controller
     public function store()
     {
         $this->form_validation->set_rules('name', 'name', 'required');
-        $this->form_validation->set_rules('projets[]','projets','required');
-        $this->form_validation->set_rules('datedebut','date début contrat','required');
-        $this->form_validation->set_rules('datefin','date fin contrat','required');
+        //$this->form_validation->set_rules('projets[]','projets','required');
+        $this->form_validation->set_rules('datedebut', 'date début contrat', 'required');
+        $this->form_validation->set_rules('datefin', 'date fin contrat', 'required');
         if ($this->form_validation->run()) {
             $contrat = new stdClass();
             $contrat->name = $this->input->post('name');
             $contrat->datedebut = $this->input->post('datedebut');
             $contrat->datefin = $this->input->post('datefin');
-            $projets = $this->input->post('projets');
+            //$projets = $this->input->post('projets');
 
             $id = $this->Contrats_model->addcontrat($contrat);
             $idcontart = array(
-                'id_contrat' =>$id,
+                'id_contrat' => $id,
             );
 
-            $t = $this->Projets_model->updateByprojetsId($projets,$idcontart);
-            if ($t != null) {
-                $this->session->set_flashdata('succus', 'Nouvel contrat est bien enregistrer.');
-                redirect('contrats');
-            }
-        } else {
-            $this->session->set_flashdata('error', 'Veuillez remplir tous les champs.');
-            redirect('contrats/create');
+            /* $t = $this->Projets_model->updateByprojetsId($projets,$idcontart);
+             if ($t != null) {
+                 $this->session->set_flashdata('succus', 'Nouvel contrat est bien enregistrer.');
+                 redirect('contrats');
+             }
+         } else {
+             $this->session->set_flashdata('error', 'Veuillez remplir tous les champs.');
+             redirect('contrats/create');
+         }
+            */
+            redirect('contrats');
         }
     }
 

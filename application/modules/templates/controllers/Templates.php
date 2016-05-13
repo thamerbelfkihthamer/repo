@@ -10,11 +10,13 @@ class Templates extends  MX_Controller
 {
 
     function __construct(){
+        $this->load->model('notifications/Notifications_model');
         parent::__construct();
     }
 
     public function header(){
-        $this->load->view('header');
+        $data ["notifications"] = $this->Notifications_model->getAllnotifications();
+        $this->load->view('header',$data);
     }
     public function sidebar(){
         $this->load->view('sidebar');

@@ -162,7 +162,7 @@ class CI_Loader {
 	/**
 	 * Is Loaded
 	 *
-	 * A utility method to test if a class is in the self::$_ci_classes array.
+	 * A utility method to services if a class is in the self::$_ci_classes array.
 	 *
 	 * @used-by	Mainly used by Form Helper function _get_validation_object().
 	 *
@@ -1200,7 +1200,7 @@ class CI_Loader {
 				$found = FALSE;
 				foreach ($config_component->_config_paths as $path)
 				{
-					// We test for both uppercase and lowercase, for servers that
+					// We services for both uppercase and lowercase, for servers that
 					// are case-sensitive with regard to file names. Load global first,
 					// override with environment next
 					if (file_exists($path.'config/'.strtolower($class).'.php'))

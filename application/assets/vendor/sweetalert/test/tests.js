@@ -113,7 +113,7 @@ test("clicking the overlay (with allowOutsideClick option) dismisses modal", fun
 test("timer works", function(assert) {
   var done = assert.async();
   swal({
-    title: "Timer test",
+    title: "Timer services",
     showConfirmButton: false,
     timer: 500
   });
@@ -129,7 +129,7 @@ test("timer works", function(assert) {
 
 test("prompt functionality works", function() {
   swal({
-    title: "Prompt test",
+    title: "Prompt services",
     type: "input",
     inputPlaceholder: "Placeholder text"
   });

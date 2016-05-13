@@ -1,6 +1,6 @@
 <?php echo Modules::run('templates/Templates/header'); ?>
 <?php echo Modules::run('templates/Templates/sidebar'); ?>
-<section class="content-wrapper" ng-controller="ClientController">
+<section class="content-wrapper" ng-app="medianetapp"    ng-controller="ClientController">
     <?php $this->load->view('clients/create')?>
     <?php $this->load->view('clients/edit')?>
     <?php $this->load->view('clients/delete')?>
@@ -125,10 +125,10 @@
                                                    <td> <?php echo $client->tel?></td>
                                                     <td>
                                                         <a href=""
-                                                           style="margin-right: 10px; margin-left: 5px;" data-toggle="modal" data-target="#editModal" ng-click="editclient(<?php echo $client->id;?>)">
+                                                           style="margin-right: 10px; margin-left: 5px;" data-toggle="modal" data-target="#editModal" ng-click="editclient(<?php echo $client->client_id;?>)">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="" data-toggle="modal" data-target="#deleteModal" ng-click="showdeleteclient(<?php echo $client->id; ?>)">
+                                                        <a href="" data-toggle="modal" data-target="#deleteModal" ng-click="showdeleteclient(<?php echo $client->client_id; ?>)">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>

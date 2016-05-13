@@ -765,7 +765,7 @@ class CI_Image_lib {
 			$this->orig_width  = $this->width;
 			$this->orig_height = $this->height;
 
-			// GD 2.0 has a cropping bug so we'll test for it
+			// GD 2.0 has a cropping bug so we'll services for it
 			if ($this->gd_version() !== FALSE)
 			{
 				$gd_version = str_replace('0', '', $this->gd_version());

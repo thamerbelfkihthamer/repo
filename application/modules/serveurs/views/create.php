@@ -40,6 +40,56 @@
                                 <!-- /.input group -->
                             </div>
                             <div class="form-group">
+                                <label>Type serveur</label>
+                                <select name="typeserveur" ng-model="url"
+                                        class="form-control select2 select2-hidden-accessible choosen"
+                                        style="width: 100%;"
+                                        tabindex="-1" aria-hidden="true">
+                                    <option value="dédié">Dédié</option>
+                                    <option value="mutualisé">Mutualisé</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Address IP</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa  fa-info"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="addressip">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <div class="form-group">
+                                <label>Système exploitation</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa  fa-info"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="system">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <div class="form-group">
+                                <label>Espace dique</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa  fa-info"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="espacedisque">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <div class="form-group">
+                                <label>Prix</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa  fa-info"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="prix">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <div class="form-group">
                                 <label>Fournisseur</label>
                                 <select name="fournisseur" class="form-control select2 select2-hidden-accessible choosen" style="width: 100%;"
                                         tabindex="-1" aria-hidden="true">
@@ -48,24 +98,6 @@
                                     <?php }?>
                                 </select>
                             </div>
-                            <!--
-                            <?php if($id_projet == null){?>
-                                <div class="form-group">
-                                    <label>Projet</label>
-                                    <select name="id_projet" class="form-control select2 select2-hidden-accessible choosen"
-                                            style="width: 100%;"
-                                            tabindex="-1" aria-hidden="true">
-                                        <option disabled selected>Selectionner client</option>
-                                        <?php foreach ($projets as $projet) { ?>
-                                            <option value="<?php echo $projet->id ?>"><?php echo $projet->name;
-                                                ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            <?php }else{?>
-                                <input type="hidden" name="id_projet" value="<?php echo $id_projet; ?>">
-                            <?php } ?>
--->
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

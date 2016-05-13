@@ -4,6 +4,7 @@
 </div><!-- ./wrapper -->
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     // $.widget.bridge('uibutton', $.ui.button);
@@ -12,8 +13,7 @@
 <script src="<?php echo base_url(); ?>application/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="<?php echo base_url(); ?>application/assets/vendor/morris/morris.min.js"></script>
+
 
 <!-- Sparkline -->
 <script src="<?php echo base_url(); ?>application/assets/vendor/sparkline/jquery.sparkline.min.js"></script>
@@ -45,21 +45,33 @@
 <script src="<?php echo base_url(); ?>application/assets/vendor/select2/select2.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url(); ?>application/assets/css/dist/js/app.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?php echo base_url(); ?>application/assets/css/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>application/assets/css/dist/js/demo.js"></script>
 <!-- Bootstrap filestyle -->
-
 <script src="<?php echo base_url(); ?>application/assets/vendor/datatables/jquery.dataTables.min.js"></script>
 
 <!-- noty js  -->
+<script src="<?php echo base_url('application/assets/vendor/fastclick/fastclick.min.js')?>"></script>
 
 <script src="<?php echo base_url(); ?>application/assets/js/noty.js"></script>
+<!-- ChartJS 1.0.1 -->
+<script src="<?php echo base_url(); ?>application/assets/vendor/chartjs/Chart.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo base_url(); ?>application/assets/vendor/fastclick/fastclick.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url(); ?>application/assets/css/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo base_url(); ?>application/assets/css/dist/js/demo.js"></script>
+
+<script src="<?php echo base_url(); ?>application/assets/css/dist/js/app.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo base_url(); ?>application/assets/css/dist/js/demo.js"></script><!-- page script -->
 
 <script src="<?php echo base_url(); ?>application/assets/vendor/datatables/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>application/assets/vendor/bootstrap-filestyle/src/bootstrap-filestyle.min.js"></script>
 <script src="<?php echo base_url(); ?>application/assets/vendor/remarkable-bootstrap-notify/dist/bootstrap-notify.js"></script>
+<script src="<?php echo base_url(); ?>application/assets/public/notifications/notification.js"></script>
 <script>
     $(".choosen").select2();
     $('body').hide();

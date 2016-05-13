@@ -35,19 +35,19 @@ class Clients_model extends CI_Model
     public function getclientById($id){
         $this->db->select('*');
         $this->db->from('clients');
-        $this->db->where('id',$id);
+        $this->db->where('client_id',$id);
         $q = $this->db->get();
         return $q->result();
     }
 
     public function updateById($id=null,$data){
-        $this->db->where('id',$id);
+        $this->db->where('client_id',$id);
         $q = $this->db->update('clients',$data);
         return $q;
     }
 
     public function deleteById($id){
-        $this->db->where('id', $id);
+        $this->db->where('client_id', $id);
         $q = $this->db->delete('clients');
         return $q;
     }

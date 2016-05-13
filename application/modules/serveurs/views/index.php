@@ -12,6 +12,7 @@
         </ol>
     </section>
     <!-- Main content -->
+
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
@@ -89,11 +90,33 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">ID
+                                                style="width: 163px;">Nom
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Type
+                                            </th><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Address ip
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                style="width: 202px;">Nom
+                                                style="width: 202px;">Système exploitation
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Espace disque
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-label="Browser: activate to sort column ascending"
+                                                style="width: 202px;">prix
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-label="Browser: activate to sort column ascending"
+                                                style="width: 202px;">Fournisseur
                                             </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
@@ -106,18 +129,19 @@
                                             foreach ($serveurs as $serveur) { ?>
 
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1"><?php echo $serveur->id ?></td>
+                                                    <td><?php echo $serveur->serveur_name ?></td>
+                                                    <td><?php echo $serveur->type ?></td>
+                                                    <td><?php echo $serveur->addressip ?></td>
+                                                    <td><?php echo $serveur->systemexploi ?></td>
+                                                    <td><?php echo $serveur->disquedur ?></td>
+                                                    <td><?php echo $serveur->prix ?></td>
                                                     <td><?php echo $serveur->name ?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('services/show/'.$serveur->id)?>"  style="margin-right: 10px; margin-left: 5px;">
-                                                            <i class="fa   fa-info-circle fa-lg"></i>
-                                                        </a>
-                                                        <a href="<?php echo site_url('serveurs/edit/' . $serveur->id) ?>"
+                                                        <a href="<?php echo site_url('serveurs/edit/' . $serveur->serveur_id) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <input type="text" value="<?php echo $serveur->id;?>" hidden>
-                                                        <a href="<?php echo site_url('serveurs/delete/'.$serveur->id)?>" onclick=" return confirmdelete()" style="margin-right: 10px; margin-left: 5px;">
+                                                        <a href="<?php echo site_url('serveurs/delete/'.$serveur->serveur_id)?>" onclick=" return confirmdelete()" style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>

@@ -90,7 +90,7 @@ class ReCaptcha
     }
     /**
      * Calls the reCAPTCHA siteverify API to verify whether the user passes
-     * CAPTCHA test.
+     * CAPTCHA services.
      *
      * @param string $remoteIp   IP address of end user.
      * @param string $response   response string from recaptcha verification.

@@ -238,7 +238,7 @@ class CI_Cache extends CI_Driver_Library {
 	/**
 	 * Is the requested driver supported in this environment?
 	 *
-	 * @param	string	$driver	The driver to test
+	 * @param	string	$driver	The driver to services
 	 * @return	array
 	 */
 	public function is_supported($driver)

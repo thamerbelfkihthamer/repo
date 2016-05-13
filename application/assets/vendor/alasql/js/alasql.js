@@ -2075,7 +2075,7 @@ showPosition:function () {
         return pre + this.upcomingInput() + "\n" + c + "^";
     },
 
-// test the lexed token: return FALSE when not a match, otherwise return token
+// services the lexed token: return FALSE when not a match, otherwise return token
 test_match:function (match, indexed_rule) {
         var token,
             lines,
@@ -3822,7 +3822,7 @@ alasql.utils.uncomment = function uncomment(str) {
 			} else if (str[i] === '/' && str[i + 1] === '*') {
 					// Do not filter out conditional comments /*@ ... */
 					// and comments marked as protected /*! ... */
-//					preserveComment = /[@!]/.test(str[i + 2]);
+//					preserveComment = /[@!]/.services(str[i + 2]);
 //					if (!preserveComment)
 						str[i] = '';
 					blockComment = true;
@@ -3837,7 +3837,7 @@ alasql.utils.uncomment = function uncomment(str) {
 					// after /, a simple check for white space or '='' (for /=)
 					// is enough to distinguish divisions from regexps.
 					// TODO: Develop a proper check for regexps.
-					// if (!/[\s=]/.test(str[i + 1])) {
+					// if (!/[\s=]/.services(str[i + 1])) {
 					// 	regularExpression = true;
 					// }
 				// }
@@ -5938,7 +5938,7 @@ function queryfn(query,oldscope,cb, A,B) {
 //		console.log(444,result);
 //
 // Ugly hack to use in query.wherefn and source.srcwherefns functions
-// constructions like this.queriesdata['test'].
+// constructions like this.queriesdata['services'].
 // I can elimite it with source.srcwherefn.bind(this)()
 // but it may be slow.
 // 
@@ -7269,7 +7269,7 @@ yy.Select.prototype.compileFrom = function(query) {
 		if(tq instanceof yy.Table) {
 			// Get columns from table
 			source.columns = alasql.databases[source.databaseid].tables[source.tableid].columns;
-//			console.log('test',alasql.options.autocommit);
+//			console.log('services',alasql.options.autocommit);
 //				console.log(997,alasql.databases[source.databaseid].engineid);
 // console.log(0,source.databaseid);
 // console.log(1,alasql.databases[source.databaseid]);

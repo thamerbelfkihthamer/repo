@@ -11,6 +11,7 @@ class Projets_model extends CI_Model
     public function getAllprojets($params = array()){
         $this->db->select('*');
         $this->db->from('projets');
+        $this->db->join('status', 'status.id = projets.id_status');
 
         if (isset($params["limit"]) && $params["limit"] != "all") {
             $this->db->limit($params["limit"], $params["start"]);

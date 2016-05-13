@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | EXPLANATION
 | -------------------------------------------------------------------
 |
-|	See http://codeigniter-aauth-test.readthedocs.org/en/latest/
+|	See http://codeigniter-aauth-services.readthedocs.org/en/latest/
 |	for more details and explainations
 |
 |

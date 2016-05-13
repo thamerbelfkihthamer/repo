@@ -8,10 +8,8 @@ class Serveurs extends MX_Controller
         parent::__construct();
         $this->load->model('serveurs/Serveurs_model');
         $this->load->model('fournisseurs/Fournisseurs_model');
-        $this->load->model('projets/Projets_model');
         $this->load->helper('pagination');
-        if (!$this->ion_auth->logged_in())
-        {
+        if (!$this->ion_auth->logged_in()) {
             // redirect them to the login page
             redirect('auth/login', 'refresh');
         }
@@ -54,6 +52,7 @@ class Serveurs extends MX_Controller
         // Liste des enregistements du requette
         $data ["serveurs"] = $this->Serveurs_model->getAllserveurs($params);
 
+
         $data['startt'] = $start;
         $this->load->view('index', $data);
     }
@@ -62,12 +61,10 @@ class Serveurs extends MX_Controller
     /*
      * return create  user form
      */
-    public function create($projet_id =null)
+    public function create($projet_id = null)
     {
         $data['fournisseurs'] = $this->Fournisseurs_model->getAllfournisseurs();
-        $data['projets'] = $this->Projets_model->getAllprojets();
-        $data['id_projet'] = $projet_id;
-        $this->load->view('create',$data);
+        $this->load->view('create', $data);
     }
 
 
@@ -77,16 +74,26 @@ class Serveurs extends MX_Controller
     public function store()
     {
         $this->form_validation->set_rules('name', 'nom', 'required');
-        $this->form_validation->set_rules('fournisseur','fournisseur','required');
-        $this->form_validation->set_rules('id_projet','id projet','required');
+        $this->form_validation->set_rules('typeserveur', 'nom', 'required');
+        $this->form_validation->set_rules('addressip', 'nom', 'required');
+        $this->form_validation->set_rules('system', 'nom', 'required');
+        $this->form_validation->set_rules('espacedisque', 'nom', 'required');
+        $this->form_validation->set_rules('prix', 'nom', 'required');
+        $this->form_validation->set_rules('fournisseur', 'fournisseur', 'required');
+
         /*
          *
          */
         if ($this->form_validation->run()) {
             $serveur = new stdClass();
-            $serveur->name = $this->input->post('name');
+            $serveur->serveur_name = $this->input->post('name');
+            $serveur->type = $this->input->post('typeserveur');
+            $serveur->addressip = $this->input->post('addressip');
+            $serveur->systemexploi = $this->input->post('system');
+            $serveur->disquedur = $this->input->post('espacedisque');
+            $serveur->prix = $this->input->post('prix');
             $serveur->id_fournisseur = $this->input->post('fournisseur');
-            $serveur->id_projet = $this->input->post('id_projet');
+
 
             $id = $this->Serveurs_model->addserveur($serveur);
             if ($id != null) {
@@ -102,12 +109,10 @@ class Serveurs extends MX_Controller
     /*
      * return edit user form
      */
-    public function edit($serveurid = null,$projetid = null)
+    public function edit($serveurid = null, $projetid = null)
     {
         $data['fournisseurs'] = $this->Fournisseurs_model->getAllfournisseurs();
         $data['serveur'] = $this->Serveurs_model->getServeurById($serveurid);
-        $data['projets'] = $this->Projets_model->getAllprojets();
-        $data['projetid'] = $projetid;
         $this->load->view('edit', $data);
     }
 
@@ -117,17 +122,26 @@ class Serveurs extends MX_Controller
     public function update($id = null)
     {
         $this->form_validation->set_rules('name', 'nom', 'required');
-        $this->form_validation->set_rules('fournisseur','fournisseur','required');
-        $this->form_validation->set_rules('projet','Projet','required');
+        $this->form_validation->set_rules('typeserveur', 'nom', 'required');
+        $this->form_validation->set_rules('addressip', 'nom', 'required');
+        $this->form_validation->set_rules('system', 'nom', 'required');
+        $this->form_validation->set_rules('espacedisque', 'nom', 'required');
+        $this->form_validation->set_rules('prix', 'nom', 'required');
+        $this->form_validation->set_rules('fournisseur', 'fournisseur', 'required');
         if ($this->input->post()) {
 
             if ($this->form_validation->run()) {
 
                 $serveur = new stdClass();
-                $serveur->name = $this->input->post('name');
+                $serveur->serveur_name = $this->input->post('name');
+                $serveur->type = $this->input->post('typeserveur');
+                $serveur->addressip = $this->input->post('addressip');
+                $serveur->systemexploi = $this->input->post('system');
+                $serveur->disquedur = $this->input->post('espacedisque');
+                $serveur->prix = $this->input->post('prix');
                 $serveur->id_fournisseur = $this->input->post('fournisseur');
-                $serveur->id_projet = $this->input->post('projet');
-                 $res = $this->Serveurs_model->updateById($id, $serveur);
+
+                $res = $this->Serveurs_model->updateById($id, $serveur);
                 if ($res) {
                     $this->session->set_flashdata('succus', 'Votre modification est validé');
                     redirect('serveurs');

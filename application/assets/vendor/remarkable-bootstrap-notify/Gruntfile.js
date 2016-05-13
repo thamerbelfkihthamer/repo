@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 			}
 		},
 		exec: {
-			'meteor-test': 'node_modules/.bin/spacejam test-packages ./'
+			'meteor-test': 'node_modules/.bin/spacejam services-packages ./'
 		}
 	});
 

@@ -95,6 +95,11 @@
                                                 colspan="1" aria-label="Browser: activate to sort column ascending"
                                                 style="width: 202px;">Nom
                                             </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Etat
+                                            </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"  class="col-xs-2"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
                                                 >Action
@@ -108,6 +113,7 @@
                                                 <tr role="row" class="odd">
                                                     <td class="sorting_1"><?php echo $projet->id ?></td>
                                                     <td><?php echo $projet->name; ?></td>
+                                                    <td><span class="pull-center badge" style="background-color: <?php echo $projet->color; ?>"> <?php echo $projet->description; ?></span></td>
                                                     <td>
                                                         <a href="<?php echo site_url('projets/show/'.$projet->id)?>"  style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa   fa-info-circle fa-lg"></i>

@@ -58,6 +58,7 @@ class Projets extends MX_Controller
         // Liste des enregistements du requette
         $data ["projets"] = $this->Projets_model->getAllprojets($params);
 
+
         $data['startt'] = $start;
         $this->load->view('index', $data);
     }
@@ -89,7 +90,6 @@ class Projets extends MX_Controller
             $projet = new stdClass();
             $projet->name = $this->input->post('name');
             $projet->id_client = $this->input->post('client');
-            $projet->id_contrat = $this->input->post('id_contrat');
 
             $id = $this->Projets_model->addprojet($projet);
 

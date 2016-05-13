@@ -74,7 +74,7 @@ if ( ! function_exists('singular'))
 			'/^(ox)en/'		=> '\1',
 			'/(alias)es$/'		=> '\1',
 			'/([octop|vir])i$/'	=> '\1us',
-			'/(cris|ax|test)es$/'	=> '\1is',
+			'/(cris|ax|services)es$/'	=> '\1is',
 			'/(shoe)s$/'		=> '\1',
 			'/(o)es$/'		=> '\1',
 			'/(bus|campus)es$/'	=> '\1',
@@ -150,7 +150,7 @@ if ( ! function_exists('plural'))
 			'/(bu|campu)s$/'           => '\1\2ses',    // bus, campus
 			'/(alias|status|virus)$/'  => '\1es',       // alias
 			'/(octop)us$/'             => '\1i',        // octopus
-			'/(ax|cris|test)is$/'      => '\1es',       // axis, crisis
+			'/(ax|cris|services)is$/'      => '\1es',       // axis, crisis
 			'/s$/'                     => 's',          // no change (compatibility)
 			'/$/'                      => 's',
 		);

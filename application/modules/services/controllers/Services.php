@@ -8,6 +8,8 @@ class Services extends MX_Controller
         parent::__construct();
         $this->load->model('services/Services_model');
         $this->load->model('serveurs/Serveurs_model');
+        $this->load->model('Status/Status_model');
+        $this->load->model('clients/Clients_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in()) {
             // redirect them to the login page
@@ -62,8 +64,11 @@ class Services extends MX_Controller
     public function create($id=null)
     {
         $data['serveur_id'] = $id;
-        $data['serveurs'] = $this->Serveurs_model->getAllserveurs();
-        $this->load->view('create', $data);
+        $data['serveurs'] = $this->Serveurs_model->getserveurs();
+        $data['status'] = $this->Status_model->getAllstatus();
+        $data['clients'] = $this->Clients_model->getAllclients();
+
+            $this->load->view('create', $data);
     }
 
     /*
@@ -71,21 +76,30 @@ class Services extends MX_Controller
     */
     public function store()
     {
-        $this->form_validation->set_rules('typeacces', 'Type acces', 'required');
-        $this->form_validation->set_rules('Identifiant', 'Identifiant', 'required');
-        $this->form_validation->set_rules('motdepass', 'mot de passe', 'required');
+        $this->form_validation->set_rules('typeservice', 'Type acces', 'required');
+        $this->form_validation->set_rules('datedebut', 'Identifiant', 'required');
+        $this->form_validation->set_rules('datefin', 'mot de passe', 'required');
+        $this->form_validation->set_rules('prixachat', 'mot de passe', 'required');
+        $this->form_validation->set_rules('prixvente', 'mot de passe', 'required');
+        $this->form_validation->set_rules('status', 'mot de passe', 'required');
+        $this->form_validation->set_rules('serveur', 'mot de passe', 'required');
+        $this->form_validation->set_rules('client', 'mot de passe', 'required');
 
         $serveurid = $this->input->post('serveur_id');
         if ($this->form_validation->run()) {
             $service = new stdClass();
-            $service->name = $this->input->post('typeacces');
-            $service->identifiant = $this->input->post('Identifiant');
-            $service->password = $this->input->post('motdepass');
-            $service->serveur_id = $this->input->post('serveur_id');
+            $service->type_service = $this->input->post('typeservice');
+            $service->datedebut = $this->input->post('datedebut');
+            $service->datefin = $this->input->post('datefin');
+            $service->prix_achat = $this->input->post('prixachat');
+            $service->prix_vente = $this->input->post('prixvente');
+            $service->id_status = $this->input->post('status');
+            $service->id_serveur = $this->input->post('serveur');
+            $service->id_client = $this->input->post('client');
             $id = $this->Services_model->addservice($service);
             if ($id != null) {
                 $this->session->set_flashdata('succus', 'Nouvel Service est bien enregistrer.');
-                redirect('services/show/' . $serveurid);
+                redirect('services');
             }
         } else {
             $this->session->set_flashdata('error', 'Veuillez remplir tous les champs.');
@@ -98,8 +112,10 @@ class Services extends MX_Controller
      */
     public function edit($id = null)
     {
-        $data['serveurs'] = $this->Serveurs_model->getAllserveurs();
+        $data['serveurs'] = $this->Serveurs_model->getserveurs();
         $data['service'] = $this->Services_model->getServiceById($id);
+        $data['status'] = $this->Status_model->getAllstatus();
+        $data['clients'] = $this->Clients_model->getAllclients();
         $this->load->view('edit', $data);
     }
 
@@ -108,24 +124,33 @@ class Services extends MX_Controller
      */
     public function update($id = null)
     {
-        $this->form_validation->set_rules('typeacces', 'Type acces', 'required');
-        $this->form_validation->set_rules('Identifiant', 'Identifiant', 'required');
-        $this->form_validation->set_rules('motdepass', 'mot de passe', 'required');
+        $this->form_validation->set_rules('typeservice', 'Type acces', 'required');
+        $this->form_validation->set_rules('datedebut', 'Identifiant', 'required');
+        $this->form_validation->set_rules('datefin', 'mot de passe', 'required');
+        $this->form_validation->set_rules('prixachat', 'mot de passe', 'required');
+        $this->form_validation->set_rules('prixvente', 'mot de passe', 'required');
+        $this->form_validation->set_rules('status', 'mot de passe', 'required');
+        $this->form_validation->set_rules('serveur', 'mot de passe', 'required');
+        $this->form_validation->set_rules('client','client','required');
 
         if ($this->input->post()) {
             if ($this->form_validation->run()) {
                 $service = new stdClass();
-                $service->name = $this->input->post('typeacces');
-                $service->identifiant = $this->input->post('Identifiant');
-                $service->password = $this->input->post('motdepass');
-                $serveurid = $this->input->post('serveur_id');
+                $service->type_service = $this->input->post('typeservice');
+                $service->datedebut = $this->input->post('datedebut');
+                $service->datefin = $this->input->post('datefin');
+                $service->prix_achat = $this->input->post('prixachat');
+                $service->prix_vente = $this->input->post('prixvente');
+                $service->id_status = $this->input->post('status');
+                $service->id_serveur = $this->input->post('serveur');
+                $service->id_client = $this->input->post('client');
                 $res = $this->Services_model->updateById($id, $service);
                 if ($res) {
                     $this->session->set_flashdata('succus', 'Votre modification est validé');
-                    redirect('services/show/' . $serveurid);
+                    redirect('services');
                 } else {
                     $this->session->set_flashdata('error', 'valider votre données');
-                    redirect('services/show/' . $serveurid);
+                    redirect('services');
                 }
             } else {
                 $this->session->set_flashdata('error', 'valider votre données');

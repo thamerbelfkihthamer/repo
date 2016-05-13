@@ -53,6 +53,7 @@
                                     <?php } ?>
                                 </select>
                             </div>
+                            <!--
                             <?php if($contrat_id == null){?>
                                 <div class="form-group">
                                     <label>Projet</label>
@@ -69,6 +70,7 @@
                             <?php }else{?>
                                 <input type="hidden" name="id_contrat" value="<?php echo $contrat_id; ?>">
                             <?php } ?>
+                            -->
 
                     </div>
                     <!-- /.box-body -->

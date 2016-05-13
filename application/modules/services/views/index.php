@@ -21,16 +21,18 @@
                             <div class="col-sm-6">
                                 <?php if ($this->session->flashdata('succus')) { ?>
                                     <script>
-                                        $(document).ready(function () {
-                                            $.notify('<?php echo $this->session->flashdata('succus'); ?>', {
-                                                type: 'success',
-                                                timer: '500',
-                                                animate: {
-                                                    enter: 'animated fadeInRight',
-                                                    exit: 'animated fadeOutRight'
-                                                }
-                                            });
-                                        });
+                                        /*
+                                         $(document).ready(function () {
+                                         $.notify('<?php echo $this->session->flashdata('succus'); ?>', {
+                                         type: 'success',
+                                         timer: '500',
+                                         animate: {
+                                         enter: 'animated fadeInRight',
+                                         exit: 'animated fadeOutRight'
+                                         }
+                                         });
+                                         });
+                                         */
                                     </script>
                                 <?php } ?>
                                 <?php if ($this->session->flashdata('error')) { ?>
@@ -56,7 +58,7 @@
                                     <div class="col-sm-6">
                                         <div class="dataTables_length" id="example1_length"><label>
                                                 <select
-                                                     aria-controls="example1"
+                                                    aria-controls="example1"
                                                     class="form-control input-sm" onchange="this.form.submit()"
                                                     name="startt">
                                                     <option value="10" <?php echo (10 == $startt) ? "selected" : ""; ?>>
@@ -89,17 +91,37 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">Nom
+                                                style="width: 163px;">Type
                                             </th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">Identifiant
+                                                style="width: 163px;">Date Début
                                             </th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">Mot de passe
+                                                style="width: 163px;">Date Fin
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Prix Achat
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Prix Vente
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Status
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Serveur
                                             </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
@@ -112,15 +134,19 @@
                                             foreach ($services as $service) { ?>
 
                                                 <tr role="row" class="odd">
-                                                    <td><?php echo $service->name ?></td>
-                                                    <td><?php echo $service->identifiant ?></td>
-                                                    <td><?php echo $service->password ?></td>
+                                                    <td><?php echo $service->type_service ?></td>
+                                                    <td><?php echo $service->datedebut?></td>
+                                                    <td><?php echo $service->datefin ?></td>
+                                                    <td><?php echo $service->prix_achat ?></td>
+                                                    <td><?php echo $service->prix_vente ?></td>
+                                                    <td><span class="pull-center badge" style="background-color: <?php echo $service->color?>"><?php echo $service->description ?></span></td>
+                                                    <td><?php echo $service->serveur_name ?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('services/edit/' . $service->id) ?>"
+                                                        <a href="<?php echo site_url('services/edit/' . $service->id_service) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('services/delete/'.$service->id)?>" onclick=" return confirmdelete()">
+                                                        <a href="<?php echo site_url('services/delete/'.$service->id_service)?>" onclick=" return confirmdelete()">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>

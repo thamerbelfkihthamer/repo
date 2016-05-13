@@ -91,7 +91,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('test', function() {
-  return gulp.src('./test/index.html')
+  return gulp.src('./services/index.html')
     .pipe(qunit({
       timeout: 20
     }));
