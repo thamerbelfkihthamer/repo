@@ -101,6 +101,10 @@ class Auth extends MX_Controller
             $remember = (bool)$this->input->post('remember');
 
             if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
+
+                $group = $this->ion_auth->get_users_groups($this->session->userdata('id'))->result();
+                $this->session->set_userdata('role',$group[0]->description);
+
                 if ($this->ion_auth->is_admin()) {
                     $this->session->set_flashdata('message', $this->ion_auth->messages());
                     redirect('/dashboard', 'refresh');

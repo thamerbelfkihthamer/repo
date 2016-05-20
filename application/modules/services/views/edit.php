@@ -38,15 +38,15 @@
                                             style="width: 100%;"
                                             tabindex="-1" aria-hidden="true">
                                         <option
-                                            value="Nom domaine" <?php echo ("Nom domaine" == $service[0]->type) ? "selected" : ""; ?>>
+                                            value="Nom domaine" <?php echo ("Nom domaine" == $service[0]->type_service) ? "selected" : ""; ?>>
                                             Nom domaine
                                         </option>
                                         <option
-                                            value="Service Emailing" <?php echo ("Service Emailing" == $service[0]->type) ? "selected" : ""; ?>>
+                                            value="Service Emailing" <?php echo ("Service Emailing" == $service[0]->type_service) ? "selected" : ""; ?>>
                                             Service Emailing
                                         </option>
                                         <option
-                                            value="Certification SSR" <?php echo ("Certification SSR" == $service[0]->type) ? "selected" : ""; ?>>
+                                            value="Certification SSR" <?php echo ("Certification SSR" == $service[0]->type_service) ? "selected" : ""; ?>>
                                             Cetification SSR
                                         </option>
                                     </select>
@@ -135,9 +135,23 @@
                                             tabindex="-1" aria-hidden="true">
                                         <option disabled selected>Selectionner Client</option>
                                         <?php foreach ($clients as $client) { ?>
-                                            <option value="<?php echo $client->client_id ?>" <?php echo ($client->id = $service[0]->id_client) ? "selected" :"";?>><?php echo $client->firstname;
+                                            <option value="<?php echo $client->client_id ?>" <?php echo ($client->client_id == $service[0]->id_client) ? "selected" :"";?>>
+                                                <?php echo $client->firstname;
                                                 echo $client->lastname;
                                                 ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Contrat</label>
+                                    <select name="contrat" class="form-control select2 select2-hidden-accessible choosen"
+                                            style="width: 100%;"
+                                            tabindex="-1" aria-hidden="true">
+                                        <option disabled selected>Selectionner Contrat</option>
+                                        <?php foreach ($contrats as $contrat) { ?>
+                                            <option value="<?php echo $contrat->id ?>" <?php echo ($contrat->id == $service[0]->id_contrat) ? "selected" :"";?>><?php echo $contrat->code;?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

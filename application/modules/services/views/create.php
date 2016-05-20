@@ -119,6 +119,19 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Contrat</label>
+                                    <select name="contrat" class="form-control select2 select2-hidden-accessible choosen"
+                                            style="width: 100%;"
+                                            tabindex="-1" aria-hidden="true">
+                                        <option disabled selected>Selectionner Contrat</option>
+                                        <?php foreach ($contrats as $contrat) { ?>
+                                            <option value="<?php echo $contrat->id ?>"><?php echo $contrat->code;?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">

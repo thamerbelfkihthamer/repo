@@ -50,9 +50,9 @@
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
   </head>
-  <body class="hold-transition skin-blue sidebar-mini" ng-app="medianetapp"  ng-controller="notificationcontrolller" >
+  <body class="hold-transition skin-blue sidebar-mini" ng-app="medianetapp">
   <div class="wrapper">
-      <header class="main-header">
+      <header class="main-header" >
           <!-- Logo -->
           <a href="<?php echo site_url('dashboard')?>" class="logo">
               <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -61,7 +61,7 @@
           </a>
           <!-- Header Navbar: style can be found in header.less -->
           <!-- Header Navbar: style can be found in header.less -->
-          <nav class="navbar navbar-static-top" role="navigation">
+          <nav class="navbar navbar-static-top" role="navigation" ng-controller="notificationcontrolller">
               <!-- Sidebar toggle button-->
               <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                   <span class="sr-only">Toggle navigation</span>
@@ -76,7 +76,7 @@
                               <span class="label label-warning"><?php echo count($notifications)?></span>
                           </a>
                           <ul class="dropdown-menu">
-                              <li class="header">You have <?php echo count($notifications)?> notifications</li>
+                              <li class="header">Vous avez <?php echo count($notifications)?> notifications</li>
                               <li>
                                   <!-- inner menu: contains the actual data -->
                                   <ul class="menu">
@@ -106,6 +106,7 @@
                                   <p>
                                       <?php echo  $this->session->userdata('last_name');?> <?php echo  $this->session->userdata('first_name');?>
                                       <br>
+
                                       <?php echo $this->session->userdata('role');?>
                                   </p>
                               </li>

@@ -32,9 +32,7 @@ class Dashboard extends MX_Controller
         $data['services'] = $this->Services_model->getAllservices();
         $data['notif'] = $this->Notifications_model->getNotifIdService();
 
-        //var_dump($data['services']);
-        //die();
-
+        
         $serviceid = array();
 
         foreach($data['notif'] as $notif =>$va){

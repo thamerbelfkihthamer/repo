@@ -34,7 +34,7 @@ class Contrats extends MX_Controller
         $params = array(
             "count" => TRUE
         );
-        $data['count'] = $this->Contrats_model->getAllcontrats($params);
+        $data['count'] = $this->Contrats_model->getContratByservice($params);
         $parametres = array(
             'total' => $data['count'],
             'base_url' => $base_url,
@@ -52,7 +52,10 @@ class Contrats extends MX_Controller
         $params ["ordre"] = "id_reponse";
 
         // Liste des enregistements du requette
-        $data ["contrats"] = $this->Contrats_model->getAllcontrats($params);
+        $data ["contrats_service"] = $this->Contrats_model->getContratByservice($params);
+    
+        //$data['contrats_service'] = $this->Contrats_model->getContratByservice();
+
 
         $data['startt'] = $start;
         $this->load->view('index', $data);
@@ -158,12 +161,11 @@ class Contrats extends MX_Controller
 
     public function show($contrat_id){
         $start = 10;
-        $data['startt'] = $start;
-        if ($this->input->get('startt')) {
-            $data['startt'] = $this->input->get('startt');
-        }
 
-        $data['projets'] = $this->Projets_model->getProjetsOfcontrats($contrat_id);
+         $data['startt'] = $start;
+        $data['services'] = $this->Contrats_model->getContratById($contrat_id);
+
+
         $data['contrat_id'] = $contrat_id;
         $this->load->view('show',$data);
     }

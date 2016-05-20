@@ -89,22 +89,27 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">Nom
+                                                style="width: 163px;">Code
                                             </th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">Date début
+                                                style="width: 163px;">Date Creation
                                             </th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">Date fin
+                                                style="width: 163px;">N° services
+                                            </th>
+                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                >Somme achat
                                             </th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">Etat
+                                                >Somme vente
                                             </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
@@ -113,23 +118,23 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php if (count($contrats) > 0) {
-                                            foreach ($contrats as $contrat) { ?>
-
+                                        <?php if (count($contrats_service) > 0) {
+                                            foreach ($contrats_service as $cs) { ?>
                                                 <tr role="row" class="odd">
-                                                    <td><?php echo $contrat->name ?></td>
-                                                    <td><?php echo $contrat->datedebut ?></td>
-                                                    <td><?php echo $contrat->datefin ?></td>
-                                                    <td><?php echo '<span class="pull-center badge bg-blue">Traité</span>' ?></td>
+                                                    <td><?php echo $cs->code ?></td>
+                                                    <td><?php echo $cs->date_creation ?></td>
+                                                    <td><?php echo $cs->nbservices?></td>
+                                                    <td><?php echo $cs->prix_achat ?></td>
+                                                    <td><?php echo $cs->prix_vente?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('contrats/show/'.$contrat->id)?>"  style="margin-right: 10px; margin-left: 5px;">
+                                                        <a href="<?php echo site_url('contrats/show/'.$cs->id_contrat)?>"  style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa   fa-info-circle fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('contrats/edit/' . $contrat->id) ?>"
+                                                        <a href="<?php echo site_url('contrats/edit/' . $cs->id_contrat) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('contrats/delete/'.$contrat->id)?>" onclick=" return confirmdelete()">
+                                                        <a href="<?php echo site_url('contrats/delete/'.$cs->id_contrat)?>" onclick=" return confirmdelete()">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -148,11 +153,11 @@
                             <div class="row">
                                 <div class="col-sm-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        Présentation  <?php echo  $start?> à <?php   echo ($limit > count($contrats)) ? count($contrats) : $limit;?> de <?php echo  count($contrats)?> entrées
+                                        Présentation  <?php echo  $start?> à <?php   echo ($limit > count($contrats_service)) ? count($contrats_service) : $limit;?> de <?php echo  count($contrats_service)?> entrées
                                     </div>
                                 </div>
                                 <div class="col-sm-7">
-                                    <?php if (count($contrats)) { ?>
+                                    <?php if (count($contrats_service)) { ?>
                                         <!---PAgination --->
                                         <?php $this->load->view("templates/admin/pagination"); ?>
                                         <!---End PAgination --->

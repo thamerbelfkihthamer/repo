@@ -1,6 +1,6 @@
 <?php echo Modules::run('templates/Templates/header'); ?>
 <?php echo Modules::run('templates/Templates/sidebar'); ?>
-<section class="content-wrapper" ng-app="medianetapp"    ng-controller="ClientController">
+<section class="content-wrapper"    ng-controller="ClientController">
     <?php $this->load->view('clients/create')?>
     <?php $this->load->view('clients/edit')?>
     <?php $this->load->view('clients/delete')?>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="pull-right">
-                                    <a href="" data-toggle="modal" data-target="#myModal">
+                                    <a href="" data-toggle="modal" data-target="#ClientModal">
                                         <i class="fa fa-user-plus fa-lg"></i>
                                     </a></div>
                             </div>

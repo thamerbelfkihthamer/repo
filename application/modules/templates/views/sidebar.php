@@ -2,6 +2,12 @@
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
+        <style type="text/css">
+.disabled{
+    pointer-events:none;
+    opacity:0.4;
+}
+        </style>
         <!-- Sidebar user panel -->
 
         <!-- search form -->
@@ -26,45 +32,47 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="<?php echo site_url('services') ?>">
+                <a href="<?php echo site_url('services') ?>" <?php if($this->session->userdata('role') == "Administrateur Systéme"){echo 'class="disabled"';}?>>
                     <i class="fa fa-book"></i> <span>Services</span>
                 </a>
             </li>
 
 
             <li class="treeview">
-                <a href="<?php echo site_url('contrats') ?>">
+                <a href="<?php echo site_url('contrats') ?>" <?php if($this->session->userdata('role') == "Administrateur Systéme"){echo 'class="disabled"';}?>>
                     <i class="fa fa-globe"></i> <span>Contrats</span>
                 </a>
             </li>
 
             <li class="treeview">
-                <a href="<?php echo site_url('clients') ?>">
+                <a href="<?php echo site_url('clients') ?>" <?php if($this->session->userdata('role') == "Administrateur Systéme"){echo 'class="disabled"';}?>>
                     <i class="fa fa-user"></i> <span>Clients</span>
                 </a>
             </li>
             <li class="treeview">
-                <a href="<?php echo site_url('fournisseurs') ?>">
+                <a href="<?php echo site_url('fournisseurs') ?>" <?php if($this->session->userdata('role') == "Administrateur finance"){echo 'class="disabled"';}?>>
                     <i class="fa fa-globe"></i> <span>Fournisseurs</span>
                 </a>
             </li>
 
             <li class="treeview">
-                <a href="<?php echo site_url('serveurs') ?>">
+                <a href="<?php echo site_url('serveurs') ?>" <?php if($this->session->userdata('role') == "Administrateur finance"){echo 'class="disabled"';}?>>
                     <i class="fa fa-server"></i> <span>Serveurs</span>
                 </a>
             </li>
 
             <li class="treeview">
-                <a href="<?php echo site_url('acces') ?>">
+                <a href="<?php echo site_url('acces') ?>" <?php if($this->session->userdata('role') == "Administrateur finance"){echo 'class="disabled"';}?>>
                     <i class="fa fa-server"></i> <span>Accés</span>
                 </a>
             </li>
+            <!--
             <li class="treeview">
-                <a href="<?php echo site_url('moniteurs') ?>">
+                <a href="<?php echo site_url('moniteurs') ?>" <?php if($this->session->userdata('role') == "Administrateur finance"){echo 'class="disabled"';}?>>
                     <i class="fa fa-globe"></i> <span>Moniteurs</span>
                 </a>
             </li>
+        -->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-group"></i>
@@ -72,10 +80,10 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu" style="display: none;">
-                    <li><a href="<?php echo site_url('groupes') ?>">
+                    <li><a href="<?php echo site_url('groupes') ?>" <?php if($this->session->userdata('role') == "Administrateur Systéme" || $this->session->userdata('role') == "Administrateur finance" ){echo 'class="disabled"';}?>>
                             <i class="fa fa-circle-o text-aqua"></i> <span>Groupes</span>
                         </a></li>
-                    <li><a href="<?php echo site_url('auth') ?>">
+                    <li><a href="<?php echo site_url('auth') ?>" <?php if($this->session->userdata('role') == "Administrateur Systéme" || $this->session->userdata('role') == "Administrateur finance"){echo 'class="disabled"';}?>>
                             <i class="fa fa-circle-o text-yellow"></i> <span>Utilisateurs</span>
                         </a></li>
                 </ul>

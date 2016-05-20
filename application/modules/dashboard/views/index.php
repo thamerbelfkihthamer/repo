@@ -34,7 +34,20 @@
                    <select name="status" class="form-control select2 select2-hidden-accessible choosen"
                            style="width: 100%;"
                            tabindex="-1" aria-hidden="true">
-                       <option disabled selected>Selectionner Status</option>
+                       <option disabled selected>Selectionner Client</option>
+                       <?php foreach ($status as $statu) { ?>
+                           <option value="<?php echo $statu->id ?>"><?php echo $statu->description;
+                               ?></option>
+                       <?php } ?>
+                   </select>
+               </div>
+               </div> <div class="col-md-3">
+               <div class="form-group">
+                   <label>Status</label>
+                   <select name="status" class="form-control select2 select2-hidden-accessible choosen"
+                           style="width: 100%;"
+                           tabindex="-1" aria-hidden="true">
+                       <option disabled selected>Selectionner Serveur</option>
                        <?php foreach ($status as $statu) { ?>
                            <option value="<?php echo $statu->id ?>"><?php echo $statu->description;
                                ?></option>
@@ -54,21 +67,8 @@
                        <?php } ?>
                    </select>
                </div>
-               </div> <div class="col-md-3">
-               <div class="form-group">
-                   <label>Status</label>
-                   <select name="status" class="form-control select2 select2-hidden-accessible choosen"
-                           style="width: 100%;"
-                           tabindex="-1" aria-hidden="true">
-                       <option disabled selected>Selectionner Status</option>
-                       <?php foreach ($status as $statu) { ?>
-                           <option value="<?php echo $statu->id ?>"><?php echo $statu->description;
-                               ?></option>
-                       <?php } ?>
-                   </select>
                </div>
-               </div>
-<!--
+
            <div class="col-md-6">
                <div class="box box-danger">
                    <div class="box-header with-border">
@@ -81,7 +81,7 @@
                    <div class="box-body">
                        <canvas id="pieChartPayement" style="height: 243px; width: 487px;" width="487" height="243"></canvas>
                    </div><!-- /.box-body -->
-           <!--
+      
                </div>
            </div>
            <div class="col-md-6">
@@ -98,7 +98,7 @@
                    </div><!-- /.box-body -->
                </div>
            </div>
--->
+
        </div>
     </section>
     <!--  main Content -->
@@ -114,7 +114,7 @@
         //--------------
         //- AREA CHART -
         //--------------
-/*
+
         // Get context with jQuery - using jQuery's .get() method.
         var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
         // This will get the first returned node in the jQuery collection.
@@ -200,7 +200,7 @@
         //-------------
         // Get context with jQuery - using jQuery's .get() method.
 
-        /*
+      
         var pieChartCanvas = $("#pieChartTypeservice").get(0).getContext("2d");
         var pieChart = new Chart(pieChartCanvas);
         var PieData = [
@@ -340,7 +340,7 @@
 
         barChartOptions.datasetFill = false;
         barChart.Bar(barChartData, barChartOptions);
-        */
+       
     });
 </script>
 

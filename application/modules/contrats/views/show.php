@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Projets
+            Contrats
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active"><a href="<?php echo site_url('projets'); ?>">projets</a></li>
+            <li class="active"><a href="<?php echo site_url('contrats'); ?>">Contrats</a></li>
         </ol>
     </section>
     <!-- Main content -->
@@ -39,12 +39,6 @@
                                         <?php echo $this->session->flashdata('error'); ?>
                                     </div>
                                 <?php } ?>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="pull-right">
-                                    <a href="<?php echo site_url('projets/create/' . $contrat_id) ?>">
-                                        <i class="fa fa-user-plus fa-lg"></i>
-                                    </a></div>
                             </div>
                         </div>
                     </div>
@@ -91,11 +85,37 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-sort="ascending"
                                                 aria-label="Rendering engine: activate to sort column descending"
-                                                style="width: 163px;">ID
+                                                style="width: 163px;">Type
                                             </th>
-                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                                colspan="1" aria-label="Browser: activate to sort column ascending"
-                                                style="width: 202px;">Nom
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Date Début
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Date Fin
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Prix Achat
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Prix Vente
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Status
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Serveur
                                             </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
@@ -104,22 +124,23 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php if (count($projets) > 0) {
-                                            foreach ($projets as $projet) { ?>
+                                        <?php if (count($services) > 0) {
+                                            foreach ($services as $service) { ?>
 
                                                 <tr role="row" class="odd">
-                                                    <td><?php echo $projet->name ?></td>
+                                                    <td><?php echo $service->type_service ?></td>
+                                                    <td><?php echo $service->datedebut?></td>
+                                                    <td><?php echo $service->datefin ?></td>
+                                                    <td><?php echo $service->prix_achat ?></td>
+                                                    <td><?php echo $service->prix_vente ?></td>
+                                                    <td><span class="pull-center badge" style="background-color: <?php echo $service->color?>"><?php echo $service->description ?></span></td>
+                                                    <td><?php echo $service->serveur_name ?></td>
                                                     <td>
-                                                        <a href="<?php echo site_url('projets/show/' . $projet->id) ?>"
-                                                           style="margin-right: 10px; margin-left: 5px;">
-                                                            <i class="fa   fa-info-circle fa-lg"></i>
-                                                        </a>
-                                                        <a href="<?php echo site_url('projets/edit/' . $projet->id . '/' . $contrat_id) ?>"
+                                                        <a href="<?php echo site_url('services/edit/' . $service->id_service) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('projets/delete/' . $projet->id) ?>"
-                                                           onclick=" return confirmdelete()">
+                                                        <a href="<?php //echo site_url('services/delete/'.$service->id_service)?>" data-toggle="modal" data-target="#deleteModal" onclick=" return confirmdelete()">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -142,7 +163,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-7">
-                                    <?php if (count($projets)) { ?>
+                                    <?php if (count($services)) { ?>
                                         <!---PAgination --->
 
                                         <!---End PAgination --->

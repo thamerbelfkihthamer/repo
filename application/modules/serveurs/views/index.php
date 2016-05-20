@@ -1,6 +1,7 @@
 <?php echo Modules::run('templates/Templates/header'); ?>
 <?php echo Modules::run('templates/Templates/sidebar'); ?>
 <section class="content-wrapper">
+    <?php $this->load->view('serveurs/delete')?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -141,7 +142,7 @@
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('serveurs/delete/'.$serveur->serveur_id)?>" onclick=" return confirmdelete()" style="margin-right: 10px; margin-left: 5px;">
+                                                        <a href="<?php echo site_url('serveurs/delete/'.$serveur->serveur_id)?>" data-toggle="modal" data-target="#deleteModal" onclick=" return confirmdelete()" style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>

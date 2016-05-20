@@ -10,6 +10,7 @@ class Services extends MX_Controller
         $this->load->model('serveurs/Serveurs_model');
         $this->load->model('Status/Status_model');
         $this->load->model('clients/Clients_model');
+        $this->load->model('contrats/Contrats_model');
         $this->load->helper('pagination');
         if (!$this->ion_auth->logged_in()) {
             // redirect them to the login page
@@ -67,6 +68,7 @@ class Services extends MX_Controller
         $data['serveurs'] = $this->Serveurs_model->getserveurs();
         $data['status'] = $this->Status_model->getAllstatus();
         $data['clients'] = $this->Clients_model->getAllclients();
+        $data['contrats'] = $this->Contrats_model->getAllcontrats();
 
             $this->load->view('create', $data);
     }
@@ -84,6 +86,7 @@ class Services extends MX_Controller
         $this->form_validation->set_rules('status', 'mot de passe', 'required');
         $this->form_validation->set_rules('serveur', 'mot de passe', 'required');
         $this->form_validation->set_rules('client', 'mot de passe', 'required');
+        $this->form_validation->set_rules('contrat','contrat','required');
 
         $serveurid = $this->input->post('serveur_id');
         if ($this->form_validation->run()) {
@@ -96,6 +99,7 @@ class Services extends MX_Controller
             $service->id_status = $this->input->post('status');
             $service->id_serveur = $this->input->post('serveur');
             $service->id_client = $this->input->post('client');
+            $service->id_contrat = $this->input->post('contrat');
             $id = $this->Services_model->addservice($service);
             if ($id != null) {
                 $this->session->set_flashdata('succus', 'Nouvel Service est bien enregistrer.');
@@ -116,6 +120,9 @@ class Services extends MX_Controller
         $data['service'] = $this->Services_model->getServiceById($id);
         $data['status'] = $this->Status_model->getAllstatus();
         $data['clients'] = $this->Clients_model->getAllclients();
+        $data['contrats'] = $this->Contrats_model->getAllcontrats();
+
+    
         $this->load->view('edit', $data);
     }
 
@@ -132,6 +139,7 @@ class Services extends MX_Controller
         $this->form_validation->set_rules('status', 'mot de passe', 'required');
         $this->form_validation->set_rules('serveur', 'mot de passe', 'required');
         $this->form_validation->set_rules('client','client','required');
+        $this->form_validation->set_rules('contrat','contrat','required');
 
         if ($this->input->post()) {
             if ($this->form_validation->run()) {
@@ -144,6 +152,7 @@ class Services extends MX_Controller
                 $service->id_status = $this->input->post('status');
                 $service->id_serveur = $this->input->post('serveur');
                 $service->id_client = $this->input->post('client');
+                $service->id_contrat = $this->input->post('contrat');
                 $res = $this->Services_model->updateById($id, $service);
                 if ($res) {
                     $this->session->set_flashdata('succus', 'Votre modification est validé');
