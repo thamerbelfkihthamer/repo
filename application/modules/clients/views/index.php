@@ -127,7 +127,7 @@
                                                         <a href=""
                                                            style="margin-right: 10px; margin-left: 5px;" data-toggle="modal" data-target="#editModal" ng-click="editclient(<?php echo $client->client_id;?>)">
                                                             <i class="fa fa-edit fa-lg"></i>
-                                                        </a>
+                                                        </a>"
                                                         <a href="" data-toggle="modal" data-target="#deleteModal" ng-click="showdeleteclient(<?php echo $client->client_id; ?>)">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>

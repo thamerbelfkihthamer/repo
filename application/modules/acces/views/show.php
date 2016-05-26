@@ -164,7 +164,7 @@
 <script>
     function confirmdelete(){
 
-        var answer = confirm('voulez-vous supprimer cet founisseur');
+        var answer = confirm('voulez-vous supprimer ce service');
 
         return answer;
     }

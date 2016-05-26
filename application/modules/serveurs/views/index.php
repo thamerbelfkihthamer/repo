@@ -1,6 +1,6 @@
 <?php echo Modules::run('templates/Templates/header'); ?>
 <?php echo Modules::run('templates/Templates/sidebar'); ?>
-<section class="content-wrapper">
+<section class="content-wrapper" ng-controller="ServeurControlller">
     <?php $this->load->view('serveurs/delete')?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -142,7 +142,7 @@
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('serveurs/delete/'.$serveur->serveur_id)?>" data-toggle="modal" data-target="#deleteModal" onclick=" return confirmdelete()" style="margin-right: 10px; margin-left: 5px;">
+                                                        <a href="" data-toggle="modal" data-target="#deleteModal" ng-click="showdeleteserveur(<?php echo $serveur->serveur_id; ?>)">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -183,13 +183,7 @@
     <!--  main Content -->
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
-<script src="<?php echo base_url();?>application/assets/js/ModelAccesView.js"></script>
-<script>
-    function confirmdelete(){
-        var answer = confirm('voulez-vous supprimer cet utilisateurs');
-        return answer;
-    }
+<script src="<?php echo base_url(); ?>application/assets/public/serveurs/serveurs.js"></script>
 
-</script>
 
 

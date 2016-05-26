@@ -152,14 +152,15 @@ class Acces extends MX_Controller
      */
     public function delete($id = null)
     {
-        $res = $this->Acces_model->deleteById($id);
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+
+        $res = $this->Acces_model->deleteById($request->id);
 
         if ($res) {
-            $this->session->set_flashdata('succus', 'Votre suppression est validé');
-            redirect('Acces');
+            echo $res;
         } else {
-            $this->session->set_flashdata('error', 'suppression ne marche pas ');
-            redirect('Acces');
+            echo $res;
         }
 
     }

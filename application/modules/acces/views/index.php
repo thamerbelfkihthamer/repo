@@ -1,6 +1,7 @@
 <?php echo Modules::run('templates/Templates/header'); ?>
 <?php echo Modules::run('templates/Templates/sidebar'); ?>
-<section class="content-wrapper">
+<section class="content-wrapper" ng-controller="accesControlller">
+    <?php $this->load->view('acces/delete')?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -120,7 +121,7 @@
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php echo site_url('Acces/delete/'.$acce->id)?>" onclick=" return confirmdelete()">
+                                                        <a href="" data-toggle="modal" data-target="#deleteModal" ng-click="showdeleteacces(<?php echo $acce->id; ?>)">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -161,14 +162,7 @@
     <!--  main Content -->
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
-<script>
-    function confirmdelete(){
+<script src="<?php echo base_url(); ?>application/assets/public/acces/acces.js"></script>
 
-        var answer = confirm('voulez-vous supprimer cet founisseur');
-
-        return answer;
-    }
-
-</script>
 
 

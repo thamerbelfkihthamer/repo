@@ -73,20 +73,13 @@
                 </a>
             </li>
         -->
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-group"></i>
-                    <span>Gestion Utilisateurs </span>
-                    <i class="fa fa-angle-left pull-right"></i>
+            <li class="treeview"><a href="<?php echo site_url('auth') ?>" <?php if($this->session->userdata('role') == "Administrateur Systéme" || $this->session->userdata('role') == "Administrateur finance"){echo 'class="disabled"';}?>>
+                    <i class="fa fa-circle-o text-yellow"></i> <span>Utilisateurs</span>
                 </a>
-                <ul class="treeview-menu" style="display: none;">
-                    <li><a href="<?php echo site_url('groupes') ?>" <?php if($this->session->userdata('role') == "Administrateur Systéme" || $this->session->userdata('role') == "Administrateur finance" ){echo 'class="disabled"';}?>>
-                            <i class="fa fa-circle-o text-aqua"></i> <span>Groupes</span>
-                        </a></li>
-                    <li><a href="<?php echo site_url('auth') ?>" <?php if($this->session->userdata('role') == "Administrateur Systéme" || $this->session->userdata('role') == "Administrateur finance"){echo 'class="disabled"';}?>>
-                            <i class="fa fa-circle-o text-yellow"></i> <span>Utilisateurs</span>
-                        </a></li>
-                </ul>
+            </li>
+            <li class="treeview"><a href="<?php echo site_url('groupes') ?>" <?php if($this->session->userdata('role') == "Administrateur Systéme" || $this->session->userdata('role') == "Administrateur finance" ){echo 'class="disabled"';}?>>
+                    <i class="fa fa-circle-o text-aqua"></i> <span>Roles</span>
+                </a>
             </li>
 
         </ul>

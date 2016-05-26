@@ -1,6 +1,6 @@
 <?php echo Modules::run('templates/Templates/header'); ?>
 <?php echo Modules::run('templates/Templates/sidebar'); ?>
-<section class="content-wrapper">
+<section class="content-wrapper" ng-controller="ServiceControlller">
     <?php $this->load->view('services/delete')?>
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -147,7 +147,8 @@
                                                            style="margin-right: 10px; margin-left: 5px;">
                                                             <i class="fa fa-edit fa-lg"></i>
                                                         </a>
-                                                        <a href="<?php //echo site_url('services/delete/'.$service->id_service)?>" data-toggle="modal" data-target="#deleteModal" onclick=" return confirmdelete()">
+
+                                                        <a href="" data-toggle="modal" data-target="#deleteModal" ng-click="showdeleteservice(<?php echo $service->id_service; ?>)">
                                                             <i class="fa fa-trash-o fa-lg"></i>
                                                         </a>
                                                     </td>
@@ -188,14 +189,8 @@
     <!--  main Content -->
 </section><!-- Content Wrapper-->
 <?php echo Modules::run('templates/Templates/footer'); ?>
-<script>
-    function confirmdelete(){
+<script src="<?php echo base_url(); ?>application/assets/public/services/services.js"></script>
 
-        var answer = confirm('voulez-vous supprimer cet founisseur');
 
-        return answer;
-    }
-
-</script>
 
 

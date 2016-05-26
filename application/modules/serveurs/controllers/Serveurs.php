@@ -163,14 +163,16 @@ class Serveurs extends MX_Controller
      */
     public function delete($id = null)
     {
-        $res = $this->Serveurs_model->deleteById($id);
+
+        $postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+
+        $res = $this->Serveurs_model->deleteById($request->id);
 
         if ($res) {
-            $this->session->set_flashdata('succus', 'Votre suppression est validé');
-            redirect('serveurs');
+            echo $res;
         } else {
-            $this->session->set_flashdata('error', 'supprission ne marche pas ');
-            redirect('serveurs');
+            echo $res;
         }
 
     }

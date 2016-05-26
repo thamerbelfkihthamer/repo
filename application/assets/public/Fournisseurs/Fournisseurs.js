@@ -59,7 +59,7 @@ app.controller("FournisseursController",["$scope","$http","$location", function(
                 $scope.name = "";
                 $scope.email = "";
                 $scope.tel = "";
-                swal("Merci!", "Modification du client est bien enregistrer !", "success");
+                swal("Merci!", "Modification du fournisseur est bien enregistrer !", "success");
             })
         }
         else {
@@ -82,7 +82,7 @@ app.controller("FournisseursController",["$scope","$http","$location", function(
                 "id": $scope.id
             }).success(function (data, status, headers, config) {
                 console.log(data);
-                swal("Merci!", "Nouvel client est bien enregistrer !", "success");
+                swal("Merci!", "le fournisseur est supprimer !", "success");
             })
     }
 }]);
