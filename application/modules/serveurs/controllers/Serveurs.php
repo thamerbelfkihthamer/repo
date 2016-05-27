@@ -13,6 +13,11 @@ class Serveurs extends MX_Controller
             // redirect them to the login page
             redirect('auth/login', 'refresh');
         }
+        if($this->session->userdata('role') == "Administrateur finance")
+        {
+            redirect('templates/error');
+
+        }
 
     }
 

@@ -25,4 +25,8 @@ class Templates extends  MX_Controller
         $this->load->view('footer');
     }
 
+    public function error(){
+        $this->load->view('error');
+    }
+
 }
