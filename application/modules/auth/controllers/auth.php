@@ -107,12 +107,16 @@ class Auth extends MX_Controller
 
                 if ($this->ion_auth->is_admin()) {
                     $this->session->set_flashdata('message', $this->ion_auth->messages());
-                    redirect('/dashboard', 'refresh');
-                } else {
+                    redirect('/auth', 'refresh');
+                } else if($this->session->userdata('role') == "Administrateur Systéme"){
                     //if the login is successful
                     //redirect them back to the home page
                     $this->session->set_flashdata('message', $this->ion_auth->messages());
-                    redirect('/dashboard', 'refresh');
+                    redirect('/serveurs', 'refresh');
+                    
+                }else if($this->session->userdata('role') == "Administrateur finance"){
+                    $this->session->set_flashdata('message', $this->ion_auth->messages());
+                    redirect('/services', 'refresh');
                 }
             } else {
                 // if the login was un-successful

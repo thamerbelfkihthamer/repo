@@ -130,12 +130,10 @@ class Notifications extends MX_Controller
 
     }
 
-    public  function getnotification(){
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
-        $id = $request->id;
-        $res = $this->Notifications_model->getById($id);
-        echo json_encode($res);
+    public  function show($id = null){
+        
+        $data['notification'] = $this->Notifications_model->getById($id);
+         $this->load->view('show',$data);
     }
 
     /*

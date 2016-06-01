@@ -82,7 +82,7 @@
                                   <ul class="menu">
                                      <?php foreach($notifications as $notif){?>
                                       <li>
-                                          <a href="#" data-toggle="modal" data-target="#myModal" ng-click="getNotificationById(<?php echo $notif->id?>)">
+                                          <a href="<?php echo site_url('notifications/show/'.$notif->id) ?>">
                                               <i class="fa fa-warning text-yellow"></i> <?php echo $notif->titre?>
                                           </a>
                                       </li>
