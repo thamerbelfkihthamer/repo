@@ -144,16 +144,16 @@
                                 </div>
                                 <div class="col-sm-7">
                                     <?php if (count($fournisseurs)) { ?>
-                                        <!---PAgination --->
+                                       
                                         <?php $this->load->view("templates/admin/pagination"); ?>
-                                        <!---End PAgination --->
+                                        
                                     <?php } ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.box-body -->
+                
             </div>
         </div>
         </div>

@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Groupes
+            Roles
         </h1>
         <ol class="breadcrumb">
             <li><a href="<?php echo site_url('dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <li class="active"><a href="<?php echo site_url('groupes'); ?>">Groupes</a></li>
+            <li class="active"><a href="<?php echo site_url('groupes'); ?>">Roles</a></li>
         </ol>
     </section>
     <!-- Main content -->

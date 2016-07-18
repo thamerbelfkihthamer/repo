@@ -12,7 +12,7 @@
             <li class="active"><a href="<?php echo site_url('auth/create_user'); ?>">Creation</a></li>
         </ol>
     </section>
-    <?php echo $message; ?>
+    <?php // echo $message; ?>
     <!-- Main content -->
     <section class="content">
         <div class="row">
@@ -20,7 +20,7 @@
                 <div class="box box-danger">
                     <div class="box-header">
                         <h3 class="box-title">Nouveau utilisateur</h3><br>
-                        <?php if ($this->session->flashdata('message')) { ?>
+                        <?php if ($this->session->flashdata('error')) { ?>
                             <div class="alert alert-danger">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <?php echo $this->session->flashdata('error'); ?>

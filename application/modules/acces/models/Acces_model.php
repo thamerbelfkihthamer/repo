@@ -11,6 +11,7 @@ class acces_model extends CI_Model
     public function getAllacces($params = array()){
         $this->db->select('*');
         $this->db->from('acces');
+        $this->db->join('serveurs','acces.serveur_id = serveurs.serveur_id');
 
         if (isset($params["limit"]) && $params["limit"] != "all") {
             $this->db->limit($params["limit"], $params["start"]);

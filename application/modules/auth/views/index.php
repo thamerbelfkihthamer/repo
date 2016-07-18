@@ -33,12 +33,7 @@
                                         });
                                     </script>
                                 <?php } ?>
-                                <?php if ($this->session->flashdata('error')) { ?>
-                                    <div class="alert alert-danger">
-                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                        <?php echo $this->session->flashdata('error'); ?>
-                                    </div>
-                                <?php } ?>
+
                             </div>
                             <div class="col-sm-6">
                                 <div class="pull-right">

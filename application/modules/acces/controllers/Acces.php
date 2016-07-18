@@ -56,6 +56,7 @@ class Acces extends MX_Controller
         // Liste des enregistements du requette
         $data ["Acces"] = $this->Acces_model->getAllAcces($params);
 
+
         $data['startt'] = $start;
         $this->load->view('index', $data);
     }

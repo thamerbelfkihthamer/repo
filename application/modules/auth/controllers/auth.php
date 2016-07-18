@@ -71,7 +71,8 @@ class Auth extends MX_Controller
             $params ["ordre"] = "id_reponse";
             $data['startt'] = $start;
             // set the flash data error message if there is one
-            $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+           // $data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
 
             //list the users
             //	$data['users'] = $this->ion_auth->users($data['groupid'])->result();
@@ -454,15 +455,21 @@ class Auth extends MX_Controller
                 'phone' => $this->input->post('phone'),
             );
         }
+        else{
+            //$this->session->set_flashdata('error', 'Veuillez remplir tous les champs.');
+        }
+
+
         if ($this->form_validation->run() == true && $this->ion_auth->register($identity, $password, $email, $additional_data, $groups)) {
             // check to see if we are creating the user
             // redirect them back to the admin page
-            $this->session->set_flashdata('message', $this->ion_auth->messages());
+            //$this->session->set_flashdata('message', $this->ion_auth->messages());
+            //$this->session->set_flashdata('error', 'Veuillez remplir tous les champs.');
             redirect("auth", 'refresh');
         } else {
             // display the create user form
             // set the flash data error message if there is one
-            $data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+            //$data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
             $data['groupes'] = $this->Groupes_model->getAllgroupes();
             $data['first_name'] = array(
                 'name' => 'first_name',

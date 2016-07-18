@@ -102,6 +102,11 @@
                                                 aria-label="Rendering engine: activate to sort column descending"
                                                 style="width: 163px;">Mot de passe
                                             </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 163px;">Serveur
+                                            </th>
                                             <th tabindex="0" aria-controls="example1" rowspan="1"
                                                 colspan="1" aria-label="CSS grade: activate to sort column ascending"
                                                 >Action
@@ -116,6 +121,7 @@
                                                     <td><?php echo $acce->name ?></td>
                                                     <td><?php echo $acce->identifiant ?></td>
                                                     <td><?php echo $acce->password ?></td>
+                                                    <td><?php echo $acce->serveur_name ?></td>
                                                     <td>
                                                         <a href="<?php echo site_url('Acces/edit/' . $acce->id) ?>"
                                                            style="margin-right: 10px; margin-left: 5px;">

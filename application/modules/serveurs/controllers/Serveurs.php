@@ -118,6 +118,8 @@ class Serveurs extends MX_Controller
     {
         $data['fournisseurs'] = $this->Fournisseurs_model->getAllfournisseurs();
         $data['serveur'] = $this->Serveurs_model->getServeurById($serveurid);
+
+        
         $this->load->view('edit', $data);
     }
 
